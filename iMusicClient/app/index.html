@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>iMusic</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="assets/css/angular-material.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body layout="row" ng-cloak>
+
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+    <md-toolbar class="md-theme-indigo">
+        <header class="nav-header">
+            <a class="logo" href>
+                <img src="assets/img/logo.png" width="150" height="150" alt="logo">
+            </a>
+        </header>
+    </md-toolbar>
+    <md-content layout-padding>
+
+    </md-content>
+</md-sidenav>
+<div flex>
+    <md-toolbar layout="row" class="md-whiteframe-glow-z1 site-content-toolbar" ng-controller="toolBarCtrl">
+        <div class="md-toolbar-tools">
+            <md-button class="md-button" ng-click="toggleSliderBar()" aria-label="Show User List">
+                <md-icon md-svg-icon="assets/img/svg/menu.svg"></md-icon>
+                <span>iMusic</span>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-content flex id="content">
+
+    </md-content>
+</div>
+
+<script src="assets/js/angular.min.js"></script>
+<script src="assets/js/angular-animate.min.js"></script>
+<script src="assets/js/angular-aria.min.js"></script>
+<script src="assets/js/angular-messages.min.js"></script>
+<script src="assets/js/angular-material.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

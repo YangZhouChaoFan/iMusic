@@ -1,0 +1,19 @@
+{
+  "name": "iMusic",
+  "main": "app://localhost:3000/app/index.html",
+  "description": "音乐",
+  "version": "0.0.1",
+  "window": {
+    "toolbar": false,
+    "min_width": 900,
+    "min_height": 600,
+    "width": 900,
+    "height": 600,
+    "icon": "app/assets/img/logo.png",
+    "resizable": true,
+    "frame" :false
+  },
+  "webkit": {
+    "plugin": true
+  }
+}
