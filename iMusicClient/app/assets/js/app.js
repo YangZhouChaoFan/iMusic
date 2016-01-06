@@ -1,4 +1,4 @@
-(function(){
+(function(nw){
     var app = angular.module('app', ['ngMaterial']);
     app.config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
@@ -8,9 +8,21 @@
     app.controller('toolBarCtrl', function($scope, $mdSidenav){
         $scope.toggleSliderBar = function(){
             $mdSidenav('left').toggle();
-        }
+        };
+
+        $scope.minWindow = function(){
+            nw.Window.get().minimize();
+        };
+
+        $scope.maxWindow = function(){
+            nw.Window.get().maximize();
+        };
+
+        $scope.closeWindow = function(){
+            nw.Window.get().close();
+        };
     });
-})();
+})(require('nw.gui'));
 
 //red, pink, purple, deep-purple, indigo, blue, light-blue, cyan, teal, green, light-green,
 //lime, yellow, amber, orange, deep-orange, brown, grey, blue-grey

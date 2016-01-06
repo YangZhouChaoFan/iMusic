@@ -17,3 +17,8 @@ html,body{
     margin: 0 auto;
     text-decoration: none;
 }
+
+.md-icon-button-tool{
+    padding: 0!important;
+    margin: 0!important;
+}
