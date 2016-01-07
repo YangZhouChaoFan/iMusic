@@ -49,6 +49,14 @@
         $scope.closeWindow = function () {
             nw.Window.get().hide();
         };
+        nw.Window.get().on('maximize', function() {
+            $scope.isNormal = false;
+            $scope.$apply();
+        });
+        nw.Window.get().on('unmaximize', function() {
+            $scope.isNormal = true;
+            $scope.$apply();
+        });
     }).controller('songListCtrl', function ($scope) {
         //歌曲列表
         $scope.songs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
@@ -56,9 +64,7 @@
             $scope.selectItem = index;
         }
         angular.element(window).bind('resize', function () {
-            var width = window.innerWidth;
-            console.log(width);
-            $scope.windowWidth = width;
+            $scope.windowWidth = window.innerWidth;
             $scope.$apply();
         });
     });
