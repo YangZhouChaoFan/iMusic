@@ -62,6 +62,7 @@
             $scope.$apply();
         });
     });
+    //启动窗口
     nw.Window.get().on('loaded', function () {
         nw.Window.get().show();
     });
