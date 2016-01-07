@@ -6,7 +6,15 @@
             .primaryPalette('teal')
             .accentPalette('orange');
     });
-    app.controller('toolBarCtrl', function ($scope, $mdSidenav) {
+    app.controller('appCtrl', function ($scope, $timeout) {
+        //启动窗口
+        nw.Window.get().on('loaded', function () {
+            nw.Window.get().show();
+            $timeout(function () {
+                $scope.isHide = true;
+            }, 1000);
+        });
+    }).controller('toolBarCtrl', function ($scope, $mdSidenav) {
 
         //滑动栏
         $scope.toggleSliderBar = function () {
@@ -49,11 +57,11 @@
         $scope.closeWindow = function () {
             nw.Window.get().hide();
         };
-        nw.Window.get().on('maximize', function() {
+        nw.Window.get().on('maximize', function () {
             $scope.isNormal = false;
             $scope.$apply();
         });
-        nw.Window.get().on('unmaximize', function() {
+        nw.Window.get().on('unmaximize', function () {
             $scope.isNormal = true;
             $scope.$apply();
         });
@@ -67,9 +75,5 @@
             $scope.windowWidth = window.innerWidth;
             $scope.$apply();
         });
-    });
-    //启动窗口
-    nw.Window.get().on('loaded', function () {
-        nw.Window.get().show();
     });
 })(require('nw.gui'));
