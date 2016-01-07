@@ -22,17 +22,17 @@
 </md-sidenav>
 <div flex>
     <md-toolbar layout="row" class="md-whiteframe-glow-z1 site-content-toolbar" ng-controller="toolBarCtrl">
-        <div class="md-toolbar-tools" >
+        <div class="md-toolbar-tools">
             <md-button class="md-button" ng-click="toggleSliderBar()" aria-label="Show User List">
                 <md-icon md-svg-icon="assets/img/svg/menu.svg"></md-icon>
                 <span>iMusic</span>
             </md-button>
-            <span flex></span>
+            <div flex class="move-tool"></div>
             <md-button class="md-icon-button md-icon-button-tool" ng-click="minWindow()" aria-label="Show User List">
-                <md-icon md-></md-icon>
+                <md-icon md-svg-icon="assets/img/svg/min.svg"></md-icon>
             </md-button>
             <md-button class="md-icon-button md-icon-button-tool" ng-click="maxWindow()" aria-label="Show User List">
-                <md-icon ng-init="isNormal=true" ng-click="isNormal=!isNormal" md-svg-icon="assets/img/svg/max{{isNormal?'':'_normal'}}.svg"></md-icon>
+                <md-icon md-svg-icon="assets/img/svg/max{{isNormal?'':'_normal'}}.svg"></md-icon>
             </md-button>
             <md-button class="md-icon-button md-icon-button-tool" ng-click="closeWindow()" aria-label="Show User List">
                 <md-icon md-svg-icon="assets/img/svg/close.svg"></md-icon>
