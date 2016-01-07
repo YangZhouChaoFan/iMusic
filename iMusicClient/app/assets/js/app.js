@@ -46,9 +46,9 @@
                     .ariaLabel('?')
                     .ok('Ok')
                     .cancel('Cancel');
-                $mdDialog.show(confirm).then(function() {
+                $mdDialog.show(confirm).then(function () {
                     nw.Window.get().close();
-                }, function() {
+                }, function () {
                     nw.Window.get().show();
                 });
             }
@@ -77,6 +77,19 @@
             $scope.isNormal = true;
             $scope.$apply();
         });
+    }).controller('channelSelectCtrl', function ($scope, $timeout) {
+        $scope.openFolder = function () {
+            $('#folderSelect').click();
+            /*$timeout(function() {
+                angular.element(document.getElementById('folderSelect')).triggerHandler('click');
+            }, 100);*/
+        }
+        $scope.openFile = function () {
+            $('#fileSelect').click();
+            /*$timeout(function() {
+                angular.element(document.getElementById('fileSelect')).triggerHandler('click');
+            }, 100);*/
+        };
     }).controller('songListCtrl', function ($scope) {
         //歌曲列表
         $scope.songs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];

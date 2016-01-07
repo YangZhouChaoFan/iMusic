@@ -20,16 +20,18 @@
             </a>
         </header>
     </md-toolbar>
-    <md-content style="padding-top: 10px;">
+    <md-content style="padding-top: 10px;" ng-controller="channelSelectCtrl">
         <div layout="row">
-            <md-button class="md-button md-primary" ng-click="" aria-label="目录">
+            <md-button class="md-button md-primary" ng-click="openFolder()" aria-label="目录">
                 <i class="fa fa-folder"></i>
                 <span class="font-cn">目录</span>
             </md-button>
-            <md-button class="md-button md-primary" ng-click="" aria-label="文件">
+            <input id="folderSelect" type="file" webkitdirectory hidden />
+            <md-button class="md-button md-primary" ng-click="openFile()" aria-label="文件">
                 <i class="fa fa-file"></i>
                 <span class="font-cn">文件</span>
             </md-button>
+            <input id="fileSelect" type="file" multiple  accept=".mp3">
         </div>
         <div layout="row">
             <md-button class="md-button md-primary" ng-click="" aria-label="豆瓣">
@@ -93,7 +95,7 @@
         </footer>
     </md-content>
 </div>
-
+<script src="assets/js/jquery-2.1.4.min.js"></script>
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/angular-animate.min.js"></script>
 <script src="assets/js/angular-aria.min.js"></script>
