@@ -11,7 +11,8 @@
     "height": 600,
     "icon": "app/assets/img/logo.png",
     "resizable": true,
-    "frame" :false
+    "frame" :false,
+    "show": false
   },
   "webkit": {
     "plugin": true

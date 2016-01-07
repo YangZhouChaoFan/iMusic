@@ -15,7 +15,7 @@
 
         //最小化、还原、最大化、隐藏、托盘
         tray = new nw.Tray({title: 'iMusic', icon: 'app/assets/img/logo.png'});
-        tray.on('click', function(){
+        tray.on('click', function () {
             nw.Window.get().show();
         });
         menu = new nw.Menu();
@@ -23,13 +23,13 @@
         menu.append(new nw.MenuItem({type: 'separator'}));
         menu.append(new nw.MenuItem({
             label: '打开iMusic',
-            click: function(){
+            click: function () {
                 nw.Window.get().show();
             }
         }));
         menu.append(new nw.MenuItem({
             label: '关闭iMusic',
-            click: function(){
+            click: function () {
                 nw.Window.get().close();
             }
         }));
@@ -49,17 +49,20 @@
         $scope.closeWindow = function () {
             nw.Window.get().hide();
         };
-    }).controller('songListCtrl', function($scope){
+    }).controller('songListCtrl', function ($scope) {
         //歌曲列表
-        $scope.songs = ['1','2','3','4','5','6','7','8','9','10','11','12'];
-        $scope.selectSong = function(index){
+        $scope.songs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+        $scope.selectSong = function (index) {
             $scope.selectItem = index;
         }
-        angular.element(window).bind('resize', function(){
+        angular.element(window).bind('resize', function () {
             var width = window.innerWidth;
             console.log(width);
             $scope.windowWidth = width;
             $scope.$apply();
         });
+    });
+    nw.Window.get().on('loaded', function () {
+        nw.Window.get().show();
     });
 })(require('nw.gui'));
