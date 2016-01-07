@@ -15,7 +15,7 @@
                 $scope.$apply();
             }, 1000);
         });
-    }).controller('toolBarCtrl', function ($scope, $mdSidenav) {
+    }).controller('toolBarCtrl', function ($scope, $mdSidenav, $mdDialog) {
 
         //滑动栏
         $scope.toggleSliderBar = function () {
@@ -39,7 +39,18 @@
         menu.append(new nw.MenuItem({
             label: '关闭iMusic',
             click: function () {
-                nw.Window.get().close();
+                nw.Window.get().show();
+                var confirm = $mdDialog.confirm()
+                    .title('Tip')
+                    .textContent('Confirm close iMusic?')
+                    .ariaLabel('?')
+                    .ok('Ok')
+                    .cancel('Cancel');
+                $mdDialog.show(confirm).then(function() {
+                    nw.Window.get().close();
+                }, function() {
+                    nw.Window.get().show();
+                });
             }
         }));
         tray.menu = menu;
