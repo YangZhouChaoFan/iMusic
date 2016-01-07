@@ -64,7 +64,7 @@
             } else {
                 nw.Window.get().unmaximize()
             }
-            $scope.isNormal = !$scope.isNormal
+            $scope.isNormal = !$scope.isNormal;
         };
         $scope.closeWindow = function () {
             nw.Window.get().hide();
