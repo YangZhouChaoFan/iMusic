@@ -1,5 +1,5 @@
 (function (nw) {
-    var app = angular.module('app', ['ngMaterial']);
+    var app = angular.module('app', ['ngMaterial', 'ngAnimate']);
     app.config(function ($mdThemingProvider) {
         //主题设置
         $mdThemingProvider.theme('default')
@@ -12,6 +12,7 @@
             nw.Window.get().show();
             $timeout(function () {
                 $scope.isHide = true;
+                $scope.$apply();
             }, 1000);
         });
     }).controller('toolBarCtrl', function ($scope, $mdSidenav) {
