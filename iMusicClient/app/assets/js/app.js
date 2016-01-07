@@ -4,7 +4,7 @@
         //主题设置
         $mdThemingProvider.theme('default')
             .primaryPalette('teal')
-        //.accentPalette('orange');
+            .accentPalette('orange');
     });
     app.controller('toolBarCtrl', function ($scope, $mdSidenav) {
 

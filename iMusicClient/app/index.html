@@ -4,12 +4,13 @@
     <title>iMusic</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="stylesheet" href="assets/css/angular-material.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
-<body layout="row" ng-cloak >
+<body layout="row" ng-cloak>
 
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-    <md-toolbar class="md-theme-indigo">
+    <md-toolbar class="md-theme-indigo" layout-padding>
         <header class="nav-header">
             <a class="logo" href>
                 <img src="assets/img/logo.png" width="150" height="150" alt="logo">
@@ -17,7 +18,22 @@
         </header>
     </md-toolbar>
     <md-content layout-padding>
-
+        <md-button class="md-raised md-primary" ng-click="" aria-label="豆瓣">
+            <md-icon class="fa fa-music"></md-icon>
+            <span class="font-cn">豆瓣</span>
+        </md-button>
+        <md-button class="md-raised md-primary" ng-click="" aria-label="百度">
+            <md-icon class="fa fa-music"></md-icon>
+            <span class="font-cn">百度</span>
+        </md-button>
+        <md-button class="md-raised md-primary" ng-click="" aria-label="360">
+            <md-icon class="fa fa-music"></md-icon>
+            <span class="font-cn">360</span>
+        </md-button>
+        <md-button class="md-raised md-primary" ng-click="" aria-label="虾米">
+            <md-icon class="fa fa-music"></md-icon>
+            <span class="font-cn">虾米</span>
+        </md-button>
     </md-content>
 </md-sidenav>
 <div flex>
@@ -39,9 +55,12 @@
             </md-button>
         </div>
     </md-toolbar>
-
     <md-content flex id="content">
-
+        <div layout="row" class="content-background"></div>
+        <div class="content-modal">
+            <div class="content-modal-img"></div>
+            <div class="content-modal-tool"></div>
+        </div>
     </md-content>
 </div>
 
