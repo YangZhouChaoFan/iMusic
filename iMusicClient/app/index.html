@@ -67,18 +67,20 @@
             </md-button>
         </div>
     </md-toolbar>
-    <md-content flex id="content">
+    <md-content flex id="content" ng-controller="songListCtrl">
         <div layout="row" class="content-background"></div>
-        <div class="content-song-list" ng-controller="songListCtrl">
-            <div ng-repeat="item in songs" ng-click="selectSong($index)" ng-class="{'content-song-list-item-select': $index==selectItem}"
-                 class="content-song-list-item"></div>
+        <div ng-class="{'content-song-list-sm': windowWidth > 1200}" class="content-song-list">
+            <div ng-repeat="item in songs" ng-click="selectSong($index)"
+                 ng-class="{'content-song-list-item-select': $index==selectItem}"
+                 class="content-song-list-item">
+            </div>
         </div>
         <div class="content-modal">
             <div class="content-modal-img"></div>
             <div class="content-modal-tool"></div>
         </div>
         <footer class="content-footer" layout="row" layout-align="center center">
-            <i class="fa fa-music"></i> iMusic. Created By Chenhao
+            <i class="fa fa-music"></i><span style="margin-left: 5px">iMusic. Created By Chenhao</span>
         </footer>
     </md-content>
 </div>

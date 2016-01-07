@@ -55,5 +55,11 @@
         $scope.selectSong = function(index){
             $scope.selectItem = index;
         }
+        $scope.$watch(function(){
+            return window.innerWidth;
+        }, function(value) {
+            $scope.windowWidth = value;
+            console.log(value)
+        });
     });
 })(require('nw.gui'));

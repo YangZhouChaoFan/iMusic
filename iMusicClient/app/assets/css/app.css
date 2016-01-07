@@ -66,7 +66,7 @@ html, body {
 }
 
 .content-song-list {
-    width: 220px;
+    width: 250px;
     height: 380px;
     position: fixed;
     top: 180px;
@@ -75,13 +75,19 @@ html, body {
     overflow-x: hidden;
 }
 
+.content-song-list-sm{
+    width: 600px;
+}
+
 .content-song-list-item {
     margin-bottom: 20px;
+    margin-right: 10px;
     width: 220px;
     height: 35px;
     background-color: rgba(198, 211, 205, 0.5);
     outline:none;
     cursor: pointer;
+    float: left;
 }
 
 .content-song-list-item:hover {
