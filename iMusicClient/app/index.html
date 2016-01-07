@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="stylesheet" href="assets/css/angular-material.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/iconfont.css">
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
 <body layout="row" ng-cloak ng-controller="appCtrl">
@@ -19,32 +20,38 @@
             </a>
         </header>
     </md-toolbar>
-    <md-content style="padding-top: 50px;">
+    <md-content style="padding-top: 10px;">
         <div layout="row">
-            <md-button class="md-raised md-primary" ng-click="" aria-label="豆瓣">
-                <md-icon class="fa fa-music"></md-icon>
+            <md-button class="md-button md-primary" ng-click="" aria-label="目录">
+                <i class="fa fa-folder"></i>
+                <span class="font-cn">目录</span>
+            </md-button>
+            <md-button class="md-button md-primary" ng-click="" aria-label="文件">
+                <i class="fa fa-file"></i>
+                <span class="font-cn">文件</span>
+            </md-button>
+        </div>
+        <div layout="row">
+            <md-button class="md-button md-primary" ng-click="" aria-label="豆瓣">
+                <i class="iconfont">&#xe655;</i>
                 <span class="font-cn">豆瓣</span>
             </md-button>
-            <md-button class="md-raised md-primary" ng-click="" aria-label="百度">
-                <md-icon class="fa fa-music"></md-icon>
+            <md-button class="md-button md-primary" ng-click="" aria-label="百度">
+                <i class="iconfont">&#x3487;</i>
                 <span class="font-cn">百度</span>
             </md-button>
-            <md-button class="md-raised md-primary" ng-click="" aria-label="360">
-                <md-icon class="fa fa-music"></md-icon>
+            <md-button class="md-button md-primary" ng-click="" aria-label="360">
+                <i class="iconfont">&#xe612;</i>
                 <span class="font-cn">360</span>
             </md-button>
         </div>
         <div layout="row">
-            <md-button class="md-raised md-primary" ng-click="" aria-label="虾米">
-                <md-icon class="fa fa-music"></md-icon>
-                <span class="font-cn">虾米</span>
-            </md-button>
-            <md-button class="md-raised md-primary" ng-click="" aria-label="QQ">
-                <md-icon class="fa fa-music"></md-icon>
+            <md-button class="md-button md-primary" ng-click="" aria-label="QQ">
+                <i class="iconfont">&#xf0002;</i>
                 <span class="font-cn">QQ</span>
             </md-button>
-            <md-button class="md-raised md-primary" ng-click="" aria-label="网易">
-                <md-icon class="fa fa-music"></md-icon>
+            <md-button class="md-button md-primary" ng-click="" aria-label="网易">
+                <i class="iconfont">&#xe607;</i>
                 <span class="font-cn">网易</span>
             </md-button>
         </div>
