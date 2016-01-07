@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
-<body layout="row" ng-cloak>
+<body layout="row" ng-cloak resize>
 
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
     <md-toolbar class="md-theme-indigo" layout-padding>
@@ -69,7 +69,7 @@
     </md-toolbar>
     <md-content flex id="content" ng-controller="songListCtrl">
         <div layout="row" class="content-background"></div>
-        <div ng-class="{'content-song-list-sm': windowWidth > 1200}" class="content-song-list">
+        <div resize ng-class="{'content-song-list-sm': windowWidth > 1100}" class="content-song-list">
             <div ng-repeat="item in songs" ng-click="selectSong($index)"
                  ng-class="{'content-song-list-item-select': $index==selectItem}"
                  class="content-song-list-item">

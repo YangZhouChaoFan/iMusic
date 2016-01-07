@@ -55,11 +55,11 @@
         $scope.selectSong = function(index){
             $scope.selectItem = index;
         }
-        $scope.$watch(function(){
-            return window.innerWidth;
-        }, function(value) {
-            $scope.windowWidth = value;
-            console.log(value)
+        angular.element(window).bind('resize', function(){
+            var width = window.innerWidth;
+            console.log(width);
+            $scope.windowWidth = width;
+            $scope.$apply();
         });
     });
 })(require('nw.gui'));

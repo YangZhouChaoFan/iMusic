@@ -4,7 +4,7 @@
   "description": "音乐",
   "version": "0.0.1",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "min_width": 900,
     "min_height": 600,
     "width": 900,
