@@ -49,5 +49,11 @@
         $scope.closeWindow = function () {
             nw.Window.get().hide();
         };
+    }).controller('songListCtrl', function($scope){
+        //歌曲列表
+        $scope.songs = ['1','2','3','4','5','6','7','8','9','10'];
+        $scope.selectSong = function(index){
+            $scope.selectItem = index;
+        }
     });
 })(require('nw.gui'));

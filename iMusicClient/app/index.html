@@ -69,6 +69,10 @@
     </md-toolbar>
     <md-content flex id="content">
         <div layout="row" class="content-background"></div>
+        <div class="content-song-list" ng-controller="songListCtrl">
+            <div ng-repeat="item in songs" ng-click="selectSong($index)" ng-class="{'content-song-list-item-select': $index==selectItem}"
+                 class="content-song-list-item"></div>
+        </div>
         <div class="content-modal">
             <div class="content-modal-img"></div>
             <div class="content-modal-tool"></div>
