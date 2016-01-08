@@ -118,6 +118,7 @@
 
         //选择目录
         $('#folderSelect').bind('change', function () {
+            $scope.audioStop();
             $scope.songs = [];
             var fs = require('fs');
             var path = require('path');
@@ -135,6 +136,7 @@
 
         //选择文件
         $('#fileSelect').bind('change', function () {
+            $scope.audioStop();
             var files = $('#fileSelect').prop('files');
             $scope.songs = [];
             for (var i = 0; i < files.length; i++) {
