@@ -124,6 +124,11 @@ html, body {
     font-family: 'Microsoft Yahei';
 }
 
+.song-title{
+    font-family: 'Microsoft Yahei';
+    font-size: 15px;
+}
+
 .song-words{
     font-family: 'Microsoft Yahei';
     font-size: 13px;

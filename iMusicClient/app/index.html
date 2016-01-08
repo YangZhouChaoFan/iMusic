@@ -90,7 +90,10 @@
         <div class="content-modal" layout="row">
             <div class="content-modal-img"></div>
             <div class="content-modal-tool" flex layout="row" layout-wrap layout-align="center end">
-                <div layout="row" flex="100" layout-align="center center" style="height: 192px;">
+                <div layout="row" flex="100" layout-align="center center" layout-padding>
+                    <p class="song-title">{{songs[selectItem].name}}</p>
+                </div>
+                <div layout="row" flex="100" layout-align="center center" style="height: 120px;">
                     <p class="song-words">歌词内容</p>
                 </div>
                 <div layout="row" layout-align="center center" layout-padding>
