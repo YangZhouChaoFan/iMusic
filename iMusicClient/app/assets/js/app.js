@@ -140,6 +140,7 @@
             if($scope.songs[newVal]){
                 var path = $scope.songs[newVal].path || '';
                 $('#player').attr('src', path);
+                $scope.isPlay = true;
             }
         });
 
@@ -161,15 +162,13 @@
             if($scope.selectItem >0 ){
                 var path = $scope.songs[--$scope.selectItem].path || '';
                 $('#player').attr('src', path);
-                $('#player')[0].play();
                 $scope.isPlay = true;
             }
         };
         $scope.audioNext = function(){
-            if($scope.selectItem < $scope.songs.length){
+            if($scope.selectItem < $scope.songs.length - 1){
                 var path = $scope.songs[++$scope.selectItem].path || '';
                 $('#player').attr('src', path);
-                $('#player')[0].play();
                 $scope.isPlay = true;
             }
         };
