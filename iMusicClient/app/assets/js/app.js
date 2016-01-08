@@ -96,6 +96,8 @@
         $scope.selectSong = function (index) {
             $scope.selectItem = index;
         }
+
+        //窗口事件
         angular.element(window).bind('resize', function () {
             $scope.windowWidth = window.innerWidth;
             $scope.$apply();
@@ -129,6 +131,14 @@
                         name: files[i].name.substr(0, files[i].name.indexOf('.mp3'))
                     }
                 );
+            }
+        });
+
+        //监控选择项
+        $scope.$watch('selectItem', function(newVal, oldVal){
+            if($scope.songs[newVal]){
+                var path = $scope.songs[newVal].path || '';
+                $('#player').attr('src', path);
             }
         });
     });
