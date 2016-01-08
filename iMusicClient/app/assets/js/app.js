@@ -118,34 +118,38 @@
 
         //选择目录
         $('#folderSelect').bind('change', function () {
-            $scope.audioStop();
-            $scope.songs = [];
-            var fs = require('fs');
-            var path = require('path');
-            var folder = $('#folderSelect').prop('files')[0].path
-            var files = fs.readdirSync(folder);
-            for (var i = 0; i < files.length; i++) {
-                if (path.extname(files[i]) == '.mp3') {
-                    $scope.songs.push({
-                        path: folder + '\\' + files[i],
-                        name: files[i].substr(0, files[i].indexOf('.mp3'))
-                    });
+            if($('#folderSelect').prop('files').length > 0){
+                var fs = require('fs');
+                var path = require('path');
+                var folder = $('#folderSelect').prop('files')[0].path;
+                var files = fs.readdirSync(folder);
+                $scope.audioStop();
+                $scope.songs = [];
+                for (var i = 0; i < files.length; i++) {
+                    if (path.extname(files[i]) == '.mp3') {
+                        $scope.songs.push({
+                            path: folder + '\\' + files[i],
+                            name: files[i].substr(0, files[i].indexOf('.mp3'))
+                        });
+                    }
                 }
             }
         });
 
         //选择文件
         $('#fileSelect').bind('change', function () {
-            $scope.audioStop();
             var files = $('#fileSelect').prop('files');
-            $scope.songs = [];
-            for (var i = 0; i < files.length; i++) {
-                $scope.songs.push(
-                    {
-                        path: files[i].path,
-                        name: files[i].name.substr(0, files[i].name.indexOf('.mp3'))
-                    }
-                );
+            if(files.length > 0){
+                $scope.audioStop();
+                $scope.songs = [];
+                for (var i = 0; i < files.length; i++) {
+                    $scope.songs.push(
+                        {
+                            path: files[i].path,
+                            name: files[i].name.substr(0, files[i].name.indexOf('.mp3'))
+                        }
+                    );
+                }
             }
         });
 
