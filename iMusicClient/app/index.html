@@ -83,7 +83,8 @@
         <div resize ng-class="{'content-song-list-sm': windowWidth > 1100}" class="content-song-list">
             <div ng-repeat="item in songs" ng-click="selectSong($index)"
                  ng-class="{'content-song-list-item-select': $index==selectItem}"
-                 class="content-song-list-item">
+                 class="content-song-list-item" layout="row" layout-align="start center" layout-padding>
+                <label class="song-list-name">{{item.name}}</label>
             </div>
         </div>
         <div class="content-modal" layout="row">

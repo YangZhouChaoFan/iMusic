@@ -113,6 +113,13 @@ html, body {
     background-color: #9dd6c5;
 }
 
+.song-list-name{
+    cursor: pointer;
+    font-size: 13px;
+    font-family: arial, helvetica, sans-serif;
+    color: rgb(51, 51, 51);
+}
+
 .font-cn {
     font-family: 'Microsoft Yahei';
 }

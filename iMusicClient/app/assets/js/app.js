@@ -81,24 +81,36 @@
         $scope.openFolder = function () {
             $('#folderSelect').click();
             /*$timeout(function() {
-                angular.element(document.getElementById('folderSelect')).triggerHandler('click');
-            }, 100);*/
+             angular.element(document.getElementById('folderSelect')).triggerHandler('click');
+             }, 100);*/
         }
         $scope.openFile = function () {
             $('#fileSelect').click();
             /*$timeout(function() {
-                angular.element(document.getElementById('fileSelect')).triggerHandler('click');
-            }, 100);*/
+             angular.element(document.getElementById('fileSelect')).triggerHandler('click');
+             }, 100);*/
         };
     }).controller('songListCtrl', function ($scope) {
         //歌曲列表
-        $scope.songs = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+        $scope.songs = [];
         $scope.selectSong = function (index) {
             $scope.selectItem = index;
         }
         angular.element(window).bind('resize', function () {
             $scope.windowWidth = window.innerWidth;
             $scope.$apply();
+        });
+        $('#fileSelect').bind('change', function () {
+            var files = $('#fileSelect').prop('files');
+            $scope.songs = [];
+            for (var i = 0; i < files.length; i++) {
+                $scope.songs.push(
+                    {
+                        path: files[i].path,
+                        name: files[i].name.substr(0, 15)
+                    }
+                );
+            }
         });
     });
 })(require('nw.gui'));
