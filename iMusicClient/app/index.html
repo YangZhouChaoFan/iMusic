@@ -22,6 +22,10 @@
     </md-toolbar>
     <md-content style="padding-top: 10px;" ng-controller="channelSelectCtrl">
         <div layout="row">
+            <md-button class="md-button md-primary" ng-click="onlineMusic()" aria-label="在线">
+                <i class="fa fa-music"></i>
+                <span class="font-cn">在线</span>
+            </md-button>
             <md-button class="md-button md-primary" ng-click="openFolder()" aria-label="目录">
                 <i class="fa fa-folder"></i>
                 <span class="font-cn">目录</span>
@@ -32,10 +36,6 @@
                 <span class="font-cn">文件</span>
             </md-button>
             <input id="fileSelect" type="file" multiple hidden accept=".mp3">
-            <md-button class="md-button md-primary" ng-click="onlineMusic()" aria-label="在线">
-                <i class="fa fa-music"></i>
-                <span class="font-cn">在线</span>
-            </md-button>
         </div>
     </md-content>
 </md-sidenav>
