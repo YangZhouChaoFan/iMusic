@@ -105,7 +105,7 @@
         });
 
         //播放器事件
-        $("#play").bind('ended', function(){
+        document.getElementById('player').addEventListener('ended', function(){
             if(!$scope.isRepeat){
                 if($scope.selectItem == $scope.songs.length - 1){
                     $scope.audioStop();
@@ -113,6 +113,7 @@
                     $scope.audioNext();
                 }
             }
+            $scope.$apply();
         });
 
         //选择目录
