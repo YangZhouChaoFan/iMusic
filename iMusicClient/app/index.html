@@ -86,9 +86,31 @@
                  class="content-song-list-item">
             </div>
         </div>
-        <div class="content-modal">
+        <div class="content-modal" layout="row">
             <div class="content-modal-img"></div>
-            <div class="content-modal-tool"></div>
+            <div class="content-modal-tool" flex layout="row" layout-wrap layout-align="center end">
+                <div layout="row" flex="100" layout-align="center center" style="height: 192px;">
+                    <p class="song-words">歌词内容</p>
+                </div>
+                <div layout="row" layout-align="center center" layout-padding>
+                    <md-button class="md-icon-button md-icon-button-tool" ng-click="" aria-label="上一首">
+                        <i class="fa fa-step-backward"></i>
+                    </md-button>
+                    <md-button class="md-icon-button md-icon-button-tool" ng-click="isPlay=!isPlay" aria-label="播放" >
+                        <i ng-class="{'fa':true, 'fa-play':!isPlay, 'fa-pause':isPlay}"></i>
+                    </md-button>
+                    <md-button class="md-icon-button md-icon-button-tool" ng-click="" aria-label="下一首">
+                        <i class="fa fa-step-forward"></i>
+                    </md-button>
+                    <md-button class="md-icon-button md-icon-button-tool" ng-click="" aria-label="停止">
+                        <i class="fa fa-stop"></i>
+                    </md-button>
+                    <md-button class="md-icon-button md-icon-button-tool" ng-click="" aria-label="重复">
+                        <i class="fa fa-repeat"></i>
+                    </md-button>
+                </div>
+
+            </div>
         </div>
         <footer class="content-footer" layout="row" layout-align="center center">
             <i class="fa fa-music"></i><span style="margin-left: 5px">iMusic. Created By Chenhao</span>
