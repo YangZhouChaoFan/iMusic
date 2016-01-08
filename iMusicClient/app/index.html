@@ -20,7 +20,10 @@
             </a>
         </header>
     </md-toolbar>
-    <md-content style="padding-top: 10px;" ng-controller="channelSelectCtrl">
+    <md-content ng-controller="channelSelectCtrl">
+        <div layout="row" layout-padding style="height: 310px; background: #e1e8e5">
+            <div></div>
+        </div>
         <div layout="row">
             <md-button class="md-button md-primary" ng-click="onlineMusic()" aria-label="在线">
                 <i class="fa fa-cloud"></i>
@@ -37,6 +40,12 @@
             </md-button>
             <input id="fileSelect" type="file" multiple hidden accept=".mp3">
         </div>
+        <div class="music-type-new"></div>
+        <div class="music-type-hot"></div>
+        <div class="music-type-claasic"></div>
+        <div class="music-type-foreign"></div>
+        <div class="music-type-gangtai"></div>
+        <div class="music-type-dalu"></div>
     </md-content>
 </md-sidenav>
 <div flex>
