@@ -136,10 +136,42 @@
 
         //监控选择项
         $scope.$watch('selectItem', function(newVal, oldVal){
+            $scope.isPlay = false;
             if($scope.songs[newVal]){
                 var path = $scope.songs[newVal].path || '';
                 $('#player').attr('src', path);
             }
         });
+
+        //播放控制
+        $scope.audioPlay = function(){
+            if($scope.isPlay){
+                $('#player')[0].pause();
+            }else{
+                $('#player')[0].play();
+            }
+            $scope.isPlay=!$scope.isPlay;
+        };
+        $scope.audioStop = function(){
+            var path = $scope.songs[$scope.selectItem].path || '';
+            $('#player').attr('src', path);
+            $scope.isPlay = false;
+        };
+        $scope.audioPrev = function(){
+            if($scope.selectItem >0 ){
+                var path = $scope.songs[--$scope.selectItem].path || '';
+                $('#player').attr('src', path);
+                $('#player')[0].play();
+                $scope.isPlay = true;
+            }
+        };
+        $scope.audioNext = function(){
+            if($scope.selectItem < $scope.songs.length){
+                var path = $scope.songs[++$scope.selectItem].path || '';
+                $('#player').attr('src', path);
+                $('#player')[0].play();
+                $scope.isPlay = true;
+            }
+        };
     });
 })(require('nw.gui'));

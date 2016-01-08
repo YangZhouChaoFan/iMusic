@@ -97,17 +97,17 @@
                     <p class="song-words">歌词内容</p>
                 </div>
                 <div layout="row" layout-align="center center" layout-padding>
-                    <audio id="player" src="" controls="controls"></audio>
-                    <md-button class="md-icon-button md-icon-button-tool" ng-click="" aria-label="上一首">
+                    <audio id="player" src="" controls="controls" hidden></audio>
+                    <md-button class="md-icon-button md-icon-button-tool" ng-click="audioPrev()" aria-label="上一首">
                         <i class="fa fa-step-backward"></i>
                     </md-button>
-                    <md-button class="md-icon-button md-icon-button-tool" ng-click="isPlay=!isPlay" aria-label="播放" >
+                    <md-button class="md-icon-button md-icon-button-tool" ng-click="audioPlay()" aria-label="播放" >
                         <i ng-class="{'fa':true, 'fa-play':!isPlay, 'fa-pause':isPlay}"></i>
                     </md-button>
-                    <md-button class="md-icon-button md-icon-button-tool" ng-click="" aria-label="下一首">
+                    <md-button class="md-icon-button md-icon-button-tool" ng-click="audioNext()" aria-label="下一首">
                         <i class="fa fa-step-forward"></i>
                     </md-button>
-                    <md-button class="md-icon-button md-icon-button-tool" ng-click="" aria-label="停止">
+                    <md-button class="md-icon-button md-icon-button-tool" ng-click="audioStop()" aria-label="停止">
                         <i class="fa fa-stop"></i>
                     </md-button>
                     <md-button class="md-icon-button md-icon-button-tool" ng-click="" aria-label="重复">
