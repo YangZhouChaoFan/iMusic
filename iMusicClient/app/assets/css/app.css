@@ -133,3 +133,7 @@ html, body {
     font-family: 'Microsoft Yahei';
     font-size: 13px;
 }
+
+.button-select{
+    color: red;
+}

@@ -93,6 +93,7 @@
     }).controller('songListCtrl', function ($scope) {
         //歌曲列表
         $scope.songs = [];
+        $scope.selectItem = -1;
         $scope.selectSong = function (index) {
             $scope.selectItem = index;
         }
@@ -101,6 +102,17 @@
         angular.element(window).bind('resize', function () {
             $scope.windowWidth = window.innerWidth;
             $scope.$apply();
+        });
+
+        //播放器事件
+        $("#play").bind('ended', function(){
+            if(!$scope.isRepeat){
+                if($scope.selectItem == $scope.songs.length - 1){
+                    $scope.audioStop();
+                }else{
+                    $scope.audioNext();
+                }
+            }
         });
 
         //选择目录
@@ -148,14 +160,21 @@
         $scope.audioPlay = function(){
             if($scope.isPlay){
                 $('#player')[0].pause();
+                $scope.isPlay=!$scope.isPlay;
+            }else if($scope.selectItem == -1){
+                if($scope.songs.length > 0){
+                    $scope.selectItem++;
+                    $('#player')[0].play();
+                    $scope.isPlay=!$scope.isPlay;
+                }
             }else{
                 $('#player')[0].play();
+                $scope.isPlay=!$scope.isPlay;
             }
-            $scope.isPlay=!$scope.isPlay;
         };
         $scope.audioStop = function(){
-            var path = $scope.songs[$scope.selectItem].path || '';
-            $('#player').attr('src', path);
+            $('#player').attr('src', '');
+            $scope.selectItem = -1;
             $scope.isPlay = false;
         };
         $scope.audioPrev = function(){
@@ -171,6 +190,14 @@
                 $('#player').attr('src', path);
                 $scope.isPlay = true;
             }
+        };
+        $scope.audioRepeat = function(){
+            if(!$scope.isRepeat){
+                $('#player').attr('loop', 'loop');
+            }else {
+                $('#player').removeAttr('loop');
+            }
+            $scope.isRepeat = !$scope.isRepeat;
         };
     });
 })(require('nw.gui'));
