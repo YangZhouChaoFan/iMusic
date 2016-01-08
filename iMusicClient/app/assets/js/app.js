@@ -126,7 +126,7 @@
             for (var i = 0; i < files.length; i++) {
                 if (path.extname(files[i]) == '.mp3') {
                     $scope.songs.push({
-                        path: folder + files[i],
+                        path: folder + '\\' + files[i],
                         name: files[i].substr(0, files[i].indexOf('.mp3'))
                     });
                 }
