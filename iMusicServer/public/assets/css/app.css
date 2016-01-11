@@ -1,4 +1,9 @@
-span,p,td,th,label,div{
+a,span,label,p,td,th,div{
     font-family: 'Microsoft Yahei';
     font-size: 13px;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
 }

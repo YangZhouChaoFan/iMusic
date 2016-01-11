@@ -12,20 +12,29 @@
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
     <md-toolbar class="md-toolbar-tools">
         <md-button class="md-button" aria-label="导航栏">
-            <md-icon md-svg-icon="assets/img/svg/menu.svg"></md-icon>
+            <i class="fa fa-list"></i>
             <span>导航栏</span>
         </md-button>
     </md-toolbar>
     <md-content>
         <md-list>
+            <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
+                <p><a href="#/home">首页</a></p>
+                <i class="fa fa-home"></i>
+            </md-list-item>
             <md-subheader class="md-no-sticky">管理</md-subheader>
             <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
-                <p>音乐管理</p>
+                <p><a href="#/music">音乐管理</a></p>
                 <i class="fa fa-music"></i>
             </md-list-item>
             <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
-                <p>用户管理</p>
+                <p><a href="#/user">用户管理</a></p>
                 <i class="fa fa-user"></i>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
+                <p><a href="#/setting">设置</a></p>
+                <i class="fa fa-cog"></i>
             </md-list-item>
         </md-list>
     </md-content>
@@ -33,16 +42,20 @@
 <div flex>
     <md-toolbar layout="row" class="md-whiteframe-glow-z1 site-content-toolbar">
         <md-button  hide-gt-sm class="md-button" aria-label="iMusic">
-            <md-icon md-svg-icon="assets/img/svg/menu.svg"></md-icon>
+            <i class="fa fa-list"></i>
             <span>iMusic</span>
         </md-button>
     </md-toolbar>
+    <md-content ng-view>
+
+    </md-content>
 </div>
 
 
 <script src="assets/js/jquery-2.1.4.min.js"></script>
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/angular-animate.min.js"></script>
+<script src="assets/js/angular-route.min.js"></script>
 <script src="assets/js/angular-aria.min.js"></script>
 <script src="assets/js/angular-messages.min.js"></script>
 <script src="assets/js/angular-material.min.js"></script>
