@@ -73,8 +73,11 @@
                 <div layout="row" flex="100" layout-align="center center" layout-padding>
                     <p class="song-title">{{songs[selectItem].name}}</p>
                 </div>
-                <div layout="row" flex="100" layout-align="center center" style="height: 120px;">
+                <div layout="row" flex="100" layout-align="center center" style="height: 80px;">
                     <p class="song-words">歌词内容</p>
+                </div>
+                <div layout="row" flex="100" layout-align="center center" style="height: 40px;">
+                    <md-slider flex="80" ng-model="songProcess" min="0" step="1" max="100" aria-label="进度条"></md-slider>
                 </div>
                 <div layout="row" layout-align="center center" layout-padding>
                     <audio id="player" src="" controls="controls" autoplay="autoplay" hidden></audio>
@@ -96,7 +99,6 @@
                 </div>
             </div>
         </div>
-        <!--<md-progress-linear md-mode="indeterminate"></md-progress-linear>-->
         <footer class="content-footer" layout="row" layout-align="center center">
             <i class="fa fa-music"></i><span style="margin-left: 5px">iMusic. Created By Chenhao</span>
         </footer>

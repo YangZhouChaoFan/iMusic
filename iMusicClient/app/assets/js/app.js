@@ -4,7 +4,7 @@
         //主题设置
         $mdThemingProvider.theme('default')
             .primaryPalette('teal')
-            .accentPalette('orange');
+            .accentPalette('brown');
     });
     app.controller('appCtrl', function ($scope, $timeout) {
         //启动窗口
