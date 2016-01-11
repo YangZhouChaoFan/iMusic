@@ -22,7 +22,11 @@ app.config(function ($mdThemingProvider, $routeProvider) {
         redirectTo: '/'
     });
 });
-app.controller('homeCtrl',function($scope){
+app.controller('navCtrl', function($scope, $mdSidenav){
+    $scope.open = function () {
+        $mdSidenav('left').toggle();
+    }
+}).controller('homeCtrl',function($scope){
 
 }).controller('musicCtrl',function($scope){
 

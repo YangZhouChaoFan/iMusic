@@ -23,7 +23,7 @@
                 <i class="fa fa-home"></i>
             </md-list-item>
             <md-divider></md-divider>
-            <md-subheader class="md-no-sticky">管理：对用户和音乐管理</md-subheader>
+            <md-subheader class="md-no-sticky">管理：对用户和音乐管理(增删改查)</md-subheader>
             <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
                 <p><a href="#/music">音乐管理</a></p>
                 <i class="fa fa-music"></i>
@@ -41,13 +41,13 @@
     </md-content>
 </md-sidenav>
 <div flex>
-    <md-toolbar layout="row" class="md-whiteframe-glow-z1 site-content-toolbar">
-        <md-button  hide-gt-sm class="md-button" aria-label="iMusic">
+    <md-toolbar layout="row" class="md-whiteframe-glow-z1 site-content-toolbar" ng-controller="navCtrl">
+        <md-button  hide-gt-sm class="md-button" ng-click="open()" aria-label="iMusic">
             <i class="fa fa-list"></i>
             <span>iMusic</span>
         </md-button>
     </md-toolbar>
-    <md-content ng-view>
+    <md-content ng-view layout="row" layout-align="center center" layout-padding>
 
     </md-content>
 </div>
