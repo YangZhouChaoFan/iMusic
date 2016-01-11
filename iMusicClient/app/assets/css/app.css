@@ -145,4 +145,5 @@ html, body {
     width: 300px;
     height: 120px;
     border: 0;
+    cursor: pointer;
 }
