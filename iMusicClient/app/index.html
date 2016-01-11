@@ -17,26 +17,30 @@
     <md-toolbar class="md-toolbar-tools" ng-controller="channelSelectCtrl">
         <md-button class="md-icon-button md-primary" ng-click="openFolder()" aria-label="目录">
             <i class="fa fa-folder"></i>
-            <span class="font-cn"></span>
+            <md-tooltip class="font-cn">目录</md-tooltip>
         </md-button>
         <input id="folderSelect" type="file" nwdirectory hidden />
         <md-button class="md-icon-button md-primary" ng-click="openFile()" aria-label="文件">
             <i class="fa fa-file"></i>
-            <span class="font-cn"></span>
+            <md-tooltip class="font-cn">文件</md-tooltip>
         </md-button>
         <input id="fileSelect" type="file" multiple hidden accept=".mp3">
     </md-toolbar>
     <md-content>
         <div layout="row" layout-align="center center">
+            <md-tooltip class="font-cn" md-direction="right">国语</md-tooltip>
             <img class="img-view" src="assets/img/png/国语.png">
         </div>
         <div layout="row" layout-align="center center">
+            <md-tooltip class="font-cn" md-direction="right">港台</md-tooltip>
             <img class="img-view" src="assets/img/png/港台.png">
         </div>
         <div layout="row" layout-align="center center">
+            <md-tooltip class="font-cn" md-direction="right">欧美</md-tooltip>
             <img class="img-view" src="assets/img/png/欧美.png">
         </div>
         <div layout="row" layout-align="center center">
+            <md-tooltip class="font-cn" md-direction="right">日韩</md-tooltip>
             <img class="img-view" src="assets/img/png/日韩.png">
         </div>
     </md-content>
