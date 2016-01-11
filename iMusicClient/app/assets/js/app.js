@@ -13,7 +13,7 @@
             $timeout(function () {
                 $scope.isHide = true;
                 $scope.$apply();
-            }, 1000);
+            }, 2000);
         });
     }).controller('toolBarCtrl', function ($scope, $mdSidenav, $mdDialog) {
 
