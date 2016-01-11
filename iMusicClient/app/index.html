@@ -77,7 +77,7 @@
                     <p class="song-words">歌词内容</p>
                 </div>
                 <div layout="row" flex="100" layout-align="center center" style="height: 40px;">
-                    <md-slider flex="80" ng-model="songProcess" ng-mouseup="audioProess()" min="0" step="1" max="100" aria-label="进度条"></md-slider>
+                    <md-slider flex="80" ng-model="songProcess" ng-mousedown="auidoProcessLock()" ng-mouseup="audioProess()" min="0" step="1" max="100" aria-label="进度条"></md-slider>
                 </div>
                 <div layout="row" layout-align="center center" layout-padding>
                     <audio id="player" src="" controls="controls" autoplay="autoplay" hidden></audio>

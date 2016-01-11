@@ -126,10 +126,12 @@
         });
 
         $interval(function () {
-            if($('#player')[0].currentTime){
-                $scope.songProcess = ($('#player')[0].currentTime) / ($('#player')[0].duration) * 100;
-            }else{
-                $scope.songProcess = 0;
+            if(!$scope.lockProcess){
+                if($('#player')[0].currentTime){
+                    $scope.songProcess = ($('#player')[0].currentTime) / ($('#player')[0].duration) * 100;
+                }else{
+                    $scope.songProcess = 0;
+                }
             }
         },100);
 
@@ -223,9 +225,13 @@
             }
             $scope.isRepeat = !$scope.isRepeat;
         };
+        $scope.auidoProcessLock = function(){
+            $scope.lockProcess = true;
+        };
         $scope.audioProess = function () {
             $('#player')[0].currentTime = ($scope.songProcess / 100) * ($('#player')[0].duration);
-        }
+            $scope.lockProcess = false;
+        };
 
     });
 })(require('nw.gui'));
