@@ -92,7 +92,10 @@
         };
     }).controller('songListCtrl', function ($scope, $interval) {
         //歌曲列表
-        $scope.songs = [];
+        $scope.songs = [{
+            'name': '慕寒 - 单身狗之歌',
+            'path': 'demo/慕寒 - 单身狗之歌.mp3'
+        }];
         $scope.selectItem = -1;
         $scope.selectSong = function (index) {
             $scope.selectItem = index;
@@ -125,6 +128,7 @@
             $scope.$apply();
         });
 
+        //进度条滚动
         $interval(function () {
             if(!$scope.lockProcess){
                 if($('#player')[0].currentTime){
