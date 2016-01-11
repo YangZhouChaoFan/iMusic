@@ -98,6 +98,7 @@
         $scope.selectSong = function (index) {
             $scope.selectItem = index;
         }
+
         //初始化歌曲列表
         if (songsCookies && songsCookies.length > 0) {
             for (var i = 0; i < songsCookies.length; i++) {
@@ -120,9 +121,11 @@
         });
 
         //关闭时保存列表
-        nw.Window.get().on('closed', function () {
-            window.localStorage.clear();
-            window.localStorage.setItem('songs', JSON.stringify($scope.songs));
+        //nw.Window.get().on('closed', function () {
+        //});
+
+        $scope.$watch('songs', function (newVal, oldVal) {
+              window.localStorage.setItem('songs', JSON.stringify(newVal));
         });
 
         //禁止拖拽文件
