@@ -104,6 +104,15 @@
             $scope.$apply();
         });
 
+        //禁止拖拽文件
+        $(window).on('dragover', function (e) {
+            e.preventDefault();
+            e.originalEvent.dataTransfer.dropEffect = 'none';
+        });
+        $(window).on('drop', function (e) {
+            e.preventDefault();
+        });
+
         //播放器事件
         document.getElementById('player').addEventListener('ended', function(){
             if(!$scope.isRepeat){
