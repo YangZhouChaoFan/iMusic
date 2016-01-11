@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <title>iMusicServer</title>
@@ -7,19 +7,35 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
-<body>
+<body layout="row" ng-cloak>
 
-<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    <md-toolbar class="md-toolbar-tools">
+        <md-button class="md-button" aria-label="导航栏">
+            <md-icon md-svg-icon="assets/img/svg/menu.svg"></md-icon>
+            <span>导航栏</span>
+        </md-button>
+    </md-toolbar>
+    <md-content>
+        <md-list>
+            <md-subheader class="md-no-sticky">管理</md-subheader>
+            <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
+                <p>音乐管理</p>
+                <i class="fa fa-music"></i>
+            </md-list-item>
+            <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
+                <p>用户管理</p>
+                <i class="fa fa-user"></i>
+            </md-list-item>
+        </md-list>
+    </md-content>
 </md-sidenav>
 <div flex>
     <md-toolbar layout="row" class="md-whiteframe-glow-z1 site-content-toolbar">
-        <div class="md-toolbar-tools">
-            <md-button class="md-button" aria-label="Show User List">
-                <md-icon md-svg-icon="assets/img/svg/menu.svg"></md-icon>
-                <span>iMusic</span>
-            </md-button>
-        </div>
+        <md-button  hide-gt-sm class="md-button" aria-label="iMusic">
+            <md-icon md-svg-icon="assets/img/svg/menu.svg"></md-icon>
+            <span>iMusic</span>
+        </md-button>
     </md-toolbar>
 </div>
 
