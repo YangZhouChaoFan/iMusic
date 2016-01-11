@@ -114,11 +114,11 @@
         });
 
         //播放器事件
-        document.getElementById('player').addEventListener('ended', function(){
-            if(!$scope.isRepeat){
-                if($scope.selectItem == $scope.songs.length - 1){
+        document.getElementById('player').addEventListener('ended', function () {
+            if (!$scope.isRepeat) {
+                if ($scope.selectItem == $scope.songs.length - 1) {
                     $scope.audioStop();
-                }else{
+                } else {
                     $scope.audioNext();
                 }
             }
@@ -127,7 +127,7 @@
 
         //选择目录
         $('#folderSelect').bind('change', function () {
-            if($('#folderSelect').prop('files').length > 0){
+            if ($('#folderSelect').prop('files').length > 0) {
                 var fs = require('fs');
                 var path = require('path');
                 var folder = $('#folderSelect').prop('files')[0].path;
@@ -148,7 +148,7 @@
         //选择文件
         $('#fileSelect').bind('change', function () {
             var files = $('#fileSelect').prop('files');
-            if(files.length > 0){
+            if (files.length > 0) {
                 $scope.audioStop();
                 $scope.songs = [];
                 for (var i = 0; i < files.length; i++) {
@@ -163,9 +163,9 @@
         });
 
         //监控选择项
-        $scope.$watch('selectItem', function(newVal, oldVal){
+        $scope.$watch('selectItem', function (newVal, oldVal) {
             $scope.isPlay = false;
-            if($scope.songs[newVal]){
+            if ($scope.songs[newVal]) {
                 var path = $scope.songs[newVal].path || '';
                 $('#player').attr('src', path);
                 $scope.isPlay = true;
@@ -173,47 +173,51 @@
         });
 
         //播放控制
-        $scope.audioPlay = function(){
-            if($scope.isPlay){
+        $scope.audioPlay = function () {
+            if ($scope.isPlay) {
                 $('#player')[0].pause();
-                $scope.isPlay=!$scope.isPlay;
-            }else if($scope.selectItem == -1){
-                if($scope.songs.length > 0){
+                $scope.isPlay = !$scope.isPlay;
+            } else if ($scope.selectItem == -1) {
+                if ($scope.songs.length > 0) {
                     $scope.selectItem++;
                     $('#player')[0].play();
-                    $scope.isPlay=!$scope.isPlay;
+                    $scope.isPlay = !$scope.isPlay;
                 }
-            }else{
+            } else {
                 $('#player')[0].play();
-                $scope.isPlay=!$scope.isPlay;
+                $scope.isPlay = !$scope.isPlay;
             }
         };
-        $scope.audioStop = function(){
+        $scope.audioStop = function () {
             $('#player').attr('src', '');
             $scope.selectItem = -1;
             $scope.isPlay = false;
         };
-        $scope.audioPrev = function(){
-            if($scope.selectItem >0 ){
+        $scope.audioPrev = function () {
+            if ($scope.selectItem > 0) {
                 var path = $scope.songs[--$scope.selectItem].path || '';
                 $('#player').attr('src', path);
                 $scope.isPlay = true;
             }
         };
-        $scope.audioNext = function(){
-            if($scope.selectItem < $scope.songs.length - 1){
+        $scope.audioNext = function () {
+            if ($scope.selectItem < $scope.songs.length - 1) {
                 var path = $scope.songs[++$scope.selectItem].path || '';
                 $('#player').attr('src', path);
                 $scope.isPlay = true;
             }
         };
-        $scope.audioRepeat = function(){
-            if(!$scope.isRepeat){
+        $scope.audioRepeat = function () {
+            if (!$scope.isRepeat) {
                 $('#player').attr('loop', 'loop');
-            }else {
+            } else {
                 $('#player').removeAttr('loop');
             }
             $scope.isRepeat = !$scope.isRepeat;
         };
+        $scope.audioProess = function () {
+            $('#player')[0].currentTime = ($scope.songProcess / 100) * ($('#player')[0].duration);
+        }
+
     });
 })(require('nw.gui'));
