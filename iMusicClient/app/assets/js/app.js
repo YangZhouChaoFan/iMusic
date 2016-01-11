@@ -92,19 +92,37 @@
         };
     }).controller('songListCtrl', function ($scope, $interval) {
         //歌曲列表
-        $scope.songs = [{
-            'name': '慕寒 - 单身狗之歌',
-            'path': 'demo/慕寒 - 单身狗之歌.mp3'
-        }];
+        $scope.songs = [];
+        var songsCookies = JSON.parse(window.localStorage.getItem('songs'));
         $scope.selectItem = -1;
         $scope.selectSong = function (index) {
             $scope.selectItem = index;
+        }
+        //初始化歌曲列表
+        if (songsCookies && songsCookies.length > 0) {
+            for (var i = 0; i < songsCookies.length; i++) {
+                $scope.songs.push({
+                    'name': songsCookies[i].name,
+                    'path': songsCookies[i].path
+                });
+            }
+        } else {
+            $scope.songs = [{
+                'name': '慕寒 - 单身狗之歌',
+                'path': 'demo/慕寒 - 单身狗之歌.mp3'
+            }];
         }
 
         //窗口事件
         angular.element(window).bind('resize', function () {
             $scope.windowWidth = window.innerWidth;
             $scope.$apply();
+        });
+
+        //关闭时保存列表
+        nw.Window.get().on('closed', function () {
+            window.localStorage.clear();
+            window.localStorage.setItem('songs', JSON.stringify($scope.songs));
         });
 
         //禁止拖拽文件
@@ -130,14 +148,14 @@
 
         //进度条滚动
         $interval(function () {
-            if(!$scope.lockProcess){
-                if($('#player')[0].currentTime){
+            if (!$scope.lockProcess) {
+                if ($('#player')[0].currentTime) {
                     $scope.songProcess = ($('#player')[0].currentTime) / ($('#player')[0].duration) * 100;
-                }else{
+                } else {
                     $scope.songProcess = 0;
                 }
             }
-        },100);
+        }, 100);
 
         //选择目录
         $('#folderSelect').bind('change', function () {
@@ -229,7 +247,7 @@
             }
             $scope.isRepeat = !$scope.isRepeat;
         };
-        $scope.auidoProcessLock = function(){
+        $scope.auidoProcessLock = function () {
             $scope.lockProcess = true;
         };
         $scope.audioProess = function () {
