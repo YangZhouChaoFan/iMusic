@@ -14,29 +14,30 @@
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-    <md-toolbar class="md-theme-indigo" layout-padding>
-        <header class="nav-header">
-            <a class="logo" href>
-                <img src="assets/img/logo.png" width="150" height="150" alt="logo">
-            </a>
-        </header>
+    <md-toolbar class="md-toolbar-tools" ng-controller="channelSelectCtrl">
+        <md-button class="md-icon-button md-primary" ng-click="openFolder()" aria-label="目录">
+            <i class="fa fa-folder"></i>
+            <span class="font-cn"></span>
+        </md-button>
+        <input id="folderSelect" type="file" nwdirectory hidden />
+        <md-button class="md-icon-button md-primary" ng-click="openFile()" aria-label="文件">
+            <i class="fa fa-file"></i>
+            <span class="font-cn"></span>
+        </md-button>
+        <input id="fileSelect" type="file" multiple hidden accept=".mp3">
     </md-toolbar>
-    <md-content style="padding-top: 10px;" ng-controller="channelSelectCtrl">
-        <div layout="row">
-            <md-button class="md-button md-primary" ng-click="onlineMusic()" aria-label="在线">
-                <i class="fa fa-cloud"></i>
-                <span class="font-cn">在线</span>
-            </md-button>
-            <md-button class="md-button md-primary" ng-click="openFolder()" aria-label="目录">
-                <i class="fa fa-folder"></i>
-                <span class="font-cn">目录</span>
-            </md-button>
-            <input id="folderSelect" type="file" nwdirectory hidden />
-            <md-button class="md-button md-primary" ng-click="openFile()" aria-label="文件">
-                <i class="fa fa-file"></i>
-                <span class="font-cn">文件</span>
-            </md-button>
-            <input id="fileSelect" type="file" multiple hidden accept=".mp3">
+    <md-content>
+        <div layout="row" layout-align="center center">
+            <img class="img-view" src="assets/img/png/国语.png">
+        </div>
+        <div layout="row" layout-align="center center">
+            <img class="img-view" src="assets/img/png/港台.png">
+        </div>
+        <div layout="row" layout-align="center center">
+            <img class="img-view" src="assets/img/png/欧美.png">
+        </div>
+        <div layout="row" layout-align="center center">
+            <img class="img-view" src="assets/img/png/日韩.png">
         </div>
     </md-content>
 </md-sidenav>
