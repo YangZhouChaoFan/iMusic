@@ -90,7 +90,7 @@
              angular.element(document.getElementById('fileSelect')).triggerHandler('click');
              }, 100);*/
         };
-    }).controller('songListCtrl', function ($scope) {
+    }).controller('songListCtrl', function ($scope, $interval) {
         //歌曲列表
         $scope.songs = [];
         $scope.selectItem = -1;
@@ -124,6 +124,14 @@
             }
             $scope.$apply();
         });
+
+        $interval(function () {
+            if($('#player')[0].currentTime){
+                $scope.songProcess = ($('#player')[0].currentTime) / ($('#player')[0].duration) * 100;
+            }else{
+                $scope.songProcess = 0;
+            }
+        },100);
 
         //选择目录
         $('#folderSelect').bind('change', function () {
