@@ -36,7 +36,7 @@ app.controller('appCtrl', function ($scope, $timeout) {
     $timeout(function () {
         $scope.isHide = true;
         $scope.$apply();
-    }, 2000);
+    }, 1000);
 }).controller('navCtrl', function ($scope, $mdSidenav) {
     $scope.open = function () {
         $mdSidenav('left').toggle();
