@@ -1,5 +1,14 @@
-var app = angular.module('app', ['ngMaterial', 'ngAnimate', 'ngRoute', 'chart.js']);
-app.config(function ($mdThemingProvider, $routeProvider) {
+var app = angular.module('app', [
+    'ngMaterial',
+    'ngAnimate',
+    'ngRoute',
+    'chart.js',
+    'ui.grid',
+    'ui.grid.selection',
+    'ui.grid.autoResize',
+    'ui.grid.resizeColumns'
+]);
+app.config(function ($mdThemingProvider, $routeProvider, $locationProvider) {
     //主题设置
     $mdThemingProvider.theme('default')
         .primaryPalette('teal')
@@ -68,8 +77,57 @@ app.controller('navCtrl', function ($scope, $mdSidenav) {
     }
 
 }).
-controller('musicCtrl', function ($scope) {
+controller('musicCtrl', function ($scope, i18nService) {
 
+    //当前选择标志位
+    $scope.zeroFlag = true;
+    $scope.singleFlag = false;
+    $scope.multiFlag = false;
+
+    $scope.data = [];
+    i18nService.setCurrentLang('zh-cn');
+    $scope.gridOptions = {
+        data: 'data',
+        enableRowSelection: true,
+        enableRowHeaderSelection: true,
+        enableSelectAll: true,
+        enableColumnResizing: true,
+        multiSelect: true,
+        columnDefs: [
+            { field: 'name', displayName: '歌名'},
+            { field: 'author', displayName: '作者'},
+            { field: 'type', displayName: '类型'}
+        ],
+        onRegisterApi: function (gridApi) {
+            //获取ui-grid的API
+            $scope.gridApi = gridApi;
+            //ui-grid的选择事件
+            gridApi.selection.on.rowSelectionChanged($scope, function (row) {
+                var rows = $scope.gridApi.selection.getSelectedRows();
+                changeSelectFlag(rows);
+            });
+            gridApi.selection.on.rowSelectionChangedBatch($scope, function (rows) {
+                changeSelectFlag(rows);
+            });
+
+            function changeSelectFlag(rows) {
+                //标志位
+                if (rows.length == 0) {
+                    $scope.zeroFlag = true;
+                    $scope.singleFlag = false;
+                    $scope.multiFlag = false;
+                } else if (rows.length == 1) {
+                    $scope.zeroFlag = false;
+                    $scope.singleFlag = true;
+                    $scope.multiFlag = false;
+                } else if (rows.length > 1) {
+                    $scope.zeroFlag = false;
+                    $scope.singleFlag = false;
+                    $scope.multiFlag = true;
+                }
+            }
+        }
+    };
 }).controller('userCtrl', function ($scope) {
 
 }).controller('settingCtrl', function ($scope) {
