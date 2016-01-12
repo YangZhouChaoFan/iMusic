@@ -143,10 +143,10 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog) {
                 controller: function($scope, $mdDialog){
                     $scope.types = ["国语", "港台", "欧美", "日韩"];
                     $scope.cancel = function(){
-                        $mdDialog.cancel();
+                        $mdDialog.cancel('cancle');
                     };
                     $scope.ok = function(){
-                        $mdDialog.cancel();
+                        $mdDialog.hide('ok');
                     };
                 },
                 templateUrl: 'tpls/music.html',
@@ -154,10 +154,10 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog) {
                 targetEvent: ev,
                 clickOutsideToClose: true,
                 fullscreen: useFullScreen
-            }).then(function (answer) {
-                $scope.status = 'You said the information was "' + answer + '".';
-            }, function () {
-                $scope.status = 'You cancelled the dialog.';
+            }).then(function (data) {
+                console.log(data);
+            }, function (data) {
+                console.log(data);
             });
         $scope.$watch(function () {
             return $mdMedia('xs') || $mdMedia('sm');
