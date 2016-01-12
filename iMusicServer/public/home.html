@@ -1,1 +1,12 @@
-home
+<div flex layout="row" layout-wrap layout-align="start center">
+    <div flex="50">
+        <canvas id="musicPie" class="chart chart-pie" chart-data="musicData" chart-labels="musicLabels"
+                chart-legend="true">
+        </canvas>
+    </div>
+    <div flex="50" id="userContainer">
+        <canvas id="userLine" class="chart chart-line" chart-data="userData" chart-options="userOptions"
+                chart-labels="userLabels" chart-series="userSeries" chart-legend="true">
+        </canvas>
+    </div>
+</div>

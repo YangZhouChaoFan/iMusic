@@ -5,6 +5,7 @@
     <title>iMusicServer</title>
     <link rel="stylesheet" href="assets/css/angular-material.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/angular-chart.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
 <body layout="row" ng-cloak>
@@ -19,22 +20,22 @@
     <md-content>
         <md-list>
             <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
-                <p><a href="#/home">首页</a></p>
+                <p><a ng-href="#/home">首页</a></p>
                 <i class="fa fa-home"></i>
             </md-list-item>
             <md-divider></md-divider>
             <md-subheader class="md-no-sticky">管理：对用户和音乐管理(增删改查)</md-subheader>
             <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
-                <p><a href="#/music">音乐管理</a></p>
+                <p><a ng-href="#/music">音乐管理</a></p>
                 <i class="fa fa-music"></i>
             </md-list-item>
             <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
-                <p><a href="#/user">用户管理</a></p>
+                <p><a ng-href="#/user">用户管理</a></p>
                 <i class="fa fa-user"></i>
             </md-list-item>
             <md-divider></md-divider>
             <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
-                <p><a href="#/setting">设置</a></p>
+                <p><a ng-href="#/setting">设置</a></p>
                 <i class="fa fa-cog"></i>
             </md-list-item>
         </md-list>
@@ -42,7 +43,7 @@
 </md-sidenav>
 <div flex>
     <md-toolbar layout="row" class="md-whiteframe-glow-z1 site-content-toolbar" ng-controller="navCtrl">
-        <md-button  hide-gt-sm class="md-button" ng-click="open()" aria-label="iMusic">
+        <md-button hide-gt-sm class="md-button" ng-click="open()" aria-label="iMusic">
             <i class="fa fa-list"></i>
             <span>iMusic</span>
         </md-button>
@@ -52,14 +53,14 @@
     </md-content>
 </div>
 
-
-<script src="assets/js/jquery-2.1.4.min.js"></script>
+<script src="assets/js/Chart.min.js"></script>
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/angular-animate.min.js"></script>
 <script src="assets/js/angular-route.min.js"></script>
 <script src="assets/js/angular-aria.min.js"></script>
 <script src="assets/js/angular-messages.min.js"></script>
 <script src="assets/js/angular-material.min.js"></script>
+<script src="assets/js/angular-chart.min.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>
