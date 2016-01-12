@@ -1,0 +1,44 @@
+<md-dialog aria-label="音乐" ng-cloak>
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>音乐</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <i class="fa fa-remove"></i>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content class="md-dialog-content">
+            <div layout="row" flex="100">
+                <md-input-container>
+                    <label>歌名</label>
+                    <input ng-model="music.name">
+                </md-input-container>
+                <md-input-container>
+                    <label>作者</label>
+                    <input ng-model="music.author">
+                </md-input-container>
+                <md-input-container >
+                    <label>类型</label>
+                    <md-select ng-model="music.type">
+                        <md-option ng-repeat="type in types" value="{{type}}">
+                            {{type}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-raised" ng-click="ok()">
+                <i class="fa fa-send"></i>
+                <span>确定</span>
+            </md-button>
+            <md-button class="md-raised" ng-click="cancel()">
+                <i class="fa fa-remove"></i>
+                <span>关闭</span>
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

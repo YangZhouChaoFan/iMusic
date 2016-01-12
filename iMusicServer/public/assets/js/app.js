@@ -83,13 +83,14 @@ app.controller('appCtrl', function ($scope, $timeout) {
     }
 
 }).
-controller('musicCtrl', function ($scope, i18nService) {
+controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog) {
 
     //当前选择标志位
     $scope.zeroFlag = true;
     $scope.singleFlag = false;
     $scope.multiFlag = false;
 
+    //表格初始化
     $scope.data = [];
     i18nService.setCurrentLang('zh-cn');
     $scope.gridOptions = {
@@ -134,6 +135,37 @@ controller('musicCtrl', function ($scope, i18nService) {
             }
         }
     };
+
+    //新增
+    $scope.insert = function (ev) {
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+        $mdDialog.show({
+                controller: function($scope, $mdDialog){
+                    $scope.types = ["国语", "港台", "欧美", "日韩"];
+                    $scope.cancel = function(){
+                        $mdDialog.cancel();
+                    };
+                    $scope.ok = function(){
+                        $mdDialog.ok();
+                    };
+                },
+                templateUrl: 'tpls/music.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                fullscreen: useFullScreen
+            }).then(function (answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function () {
+                $scope.status = 'You cancelled the dialog.';
+            });
+        $scope.$watch(function () {
+            return $mdMedia('xs') || $mdMedia('sm');
+        }, function (wantsFullScreen) {
+            $scope.customFullscreen = (wantsFullScreen === true);
+        });
+    };
+
 }).controller('userCtrl', function ($scope) {
 
 }).controller('settingCtrl', function ($scope) {

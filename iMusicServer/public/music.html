@@ -1,6 +1,17 @@
 <div flex layout="row" layout-align="start start" layout-wrap>
-    <div layout="row" flex="100">
-        123
-    </div>
+    <md-menu-bar class="md-menu" layout="row" flex="100">
+        <md-button class="md-raised md-primary" ng-click="insert($event)">
+            <i class="fa fa-plus"></i>
+            <span>新增</span>
+        </md-button>
+        <md-button class="md-raised md-primary" ng-click="update($event)">
+            <i class="fa fa-pencil"></i>
+            <span>修改</span>
+        </md-button>
+        <md-button class="md-raised md-primary" ng-click="delete($event)">
+            <i class="fa fa-remove"></i>
+            <span>删除</span>
+        </md-button>
+    </md-menu-bar>
     <div layout="row" flex="100" ui-grid="gridOptions" ui-grid-resize-columns ui-grid-auto-resize ui-grid-selection class="grid"></div>
 </div>
