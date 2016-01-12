@@ -31,7 +31,13 @@ app.config(function ($mdThemingProvider, $routeProvider, $locationProvider) {
         redirectTo: '/'
     });
 });
-app.controller('navCtrl', function ($scope, $mdSidenav) {
+app.controller('appCtrl', function ($scope, $timeout) {
+    //启动窗口
+    $timeout(function () {
+        $scope.isHide = true;
+        $scope.$apply();
+    }, 2000);
+}).controller('navCtrl', function ($scope, $mdSidenav) {
     $scope.open = function () {
         $mdSidenav('left').toggle();
     }
@@ -94,9 +100,9 @@ controller('musicCtrl', function ($scope, i18nService) {
         enableColumnResizing: true,
         multiSelect: true,
         columnDefs: [
-            { field: 'name', displayName: '歌名'},
-            { field: 'author', displayName: '作者'},
-            { field: 'type', displayName: '类型'}
+            {field: 'name', displayName: '歌名'},
+            {field: 'author', displayName: '作者'},
+            {field: 'type', displayName: '类型'}
         ],
         onRegisterApi: function (gridApi) {
             //获取ui-grid的API

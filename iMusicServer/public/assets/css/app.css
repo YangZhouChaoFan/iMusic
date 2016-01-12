@@ -11,3 +11,17 @@ a{
 md-list md-list-item p a{
     display: block;
 }
+
+.splash-background {
+    position: fixed;
+    z-index: 1000;
+    background: url("../img/bg.jpg");
+    width: 100%;
+    height: 100%;
+    -webkit-app-region: drag;
+    -webkit-transition:all linear 1s;
+}
+
+.splash-background.ng-hide {
+    opacity:0;
+}

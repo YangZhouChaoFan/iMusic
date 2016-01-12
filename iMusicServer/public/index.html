@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="assets/css/agular-ui-grid.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
-<body layout="row" ng-cloak>
-
+<body layout="row" ng-cloak ng-controller="appCtrl">
+<div class="splash-background" ng-hide="isHide" layout="row" layout-align="center center">
+    <h1><i class="fa fa-music"></i> iMusic</h1>
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
     <md-toolbar class="md-toolbar-tools">
         <md-button class="md-button" aria-label="导航栏">
