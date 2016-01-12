@@ -146,7 +146,7 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog) {
                         $mdDialog.cancel();
                     };
                     $scope.ok = function(){
-                        $mdDialog.ok();
+                        $mdDialog.cancel();
                     };
                 },
                 templateUrl: 'tpls/music.html',
