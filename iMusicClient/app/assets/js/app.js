@@ -15,12 +15,16 @@
                 $scope.$apply();
             }, 2000);
         });
+
+        //打开目录
         $scope.openFolder = function () {
             $('#folderSelect').click();
             /*$timeout(function() {
              angular.element(document.getElementById('folderSelect')).triggerHandler('click');
              }, 100);*/
         }
+
+        //打开文件
         $scope.openFile = function () {
             $('#fileSelect').click();
             /*$timeout(function() {
@@ -28,6 +32,7 @@
              }, 100);*/
         };
 
+        //选择频道
         $scope.selectChannel = function (channel) {
             $http({
                 url: "http://localhost:3000/rest/music/query",
