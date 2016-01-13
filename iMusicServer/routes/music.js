@@ -4,7 +4,7 @@ var router = express.Router();
 var fs = require('fs');
 
 router.post('/query', function (req, res, next) {
-    var data = {};
+    var data = req.body.data || {};
     musicService.query(data, function (err, results) {
         if (err) {
             return;

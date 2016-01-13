@@ -6,7 +6,7 @@
             .primaryPalette('teal')
             .accentPalette('brown');
     });
-    app.controller('appCtrl', function ($scope, $timeout) {
+    app.controller('appCtrl', function ($scope, $timeout, $http, $interval) {
         //启动窗口
         nw.Window.get().on('loaded', function () {
             nw.Window.get().show();
@@ -15,69 +15,6 @@
                 $scope.$apply();
             }, 2000);
         });
-    }).controller('toolBarCtrl', function ($scope, $mdSidenav, $mdDialog) {
-
-        //滑动栏
-        $scope.toggleSliderBar = function () {
-            $mdSidenav('left').toggle();
-        };
-
-        //最小化、还原、最大化、隐藏、托盘
-        tray = new nw.Tray({title: 'iMusic', icon: 'app/assets/img/logo.png'});
-        tray.on('click', function () {
-            nw.Window.get().show();
-        });
-        menu = new nw.Menu();
-        menu.append(new nw.MenuItem({type: 'checkbox', label: '允许通知'}));
-        menu.append(new nw.MenuItem({type: 'separator'}));
-        menu.append(new nw.MenuItem({
-            label: '打开iMusic',
-            click: function () {
-                nw.Window.get().show();
-            }
-        }));
-        menu.append(new nw.MenuItem({
-            label: '关闭iMusic',
-            click: function () {
-                nw.Window.get().show();
-                var confirm = $mdDialog.confirm()
-                    .title('Tip')
-                    .textContent('Confirm close iMusic?')
-                    .ariaLabel('?')
-                    .ok('Ok')
-                    .cancel('Cancel');
-                $mdDialog.show(confirm).then(function () {
-                    nw.Window.get().close();
-                }, function () {
-                    nw.Window.get().show();
-                });
-            }
-        }));
-        tray.menu = menu;
-        $scope.isNormal = true;
-        $scope.minWindow = function () {
-            nw.Window.get().minimize();
-        };
-        $scope.maxWindow = function () {
-            if ($scope.isNormal) {
-                nw.Window.get().maximize();
-            } else {
-                nw.Window.get().unmaximize()
-            }
-            $scope.isNormal = !$scope.isNormal;
-        };
-        $scope.closeWindow = function () {
-            nw.Window.get().hide();
-        };
-        nw.Window.get().on('maximize', function () {
-            $scope.isNormal = false;
-            $scope.$apply();
-        });
-        nw.Window.get().on('unmaximize', function () {
-            $scope.isNormal = true;
-            $scope.$apply();
-        });
-    }).controller('channelSelectCtrl', function ($scope, $timeout) {
         $scope.openFolder = function () {
             $('#folderSelect').click();
             /*$timeout(function() {
@@ -90,7 +27,18 @@
              angular.element(document.getElementById('fileSelect')).triggerHandler('click');
              }, 100);*/
         };
-    }).controller('songListCtrl', function ($scope, $interval) {
+
+        $scope.selectChannel = function (channel) {
+            $http({
+                url: "http://localhost:3000/rest/music/query",
+                method: "POST",
+                data: {data: {type: channel}}
+            }).success(function (data) {
+                $scope.audioStop();
+                $scope.songs = data;
+            });
+        }
+
         //歌曲列表
         $scope.songs = [];
         var songsCookies = JSON.parse(window.localStorage.getItem('songs'));
@@ -125,7 +73,7 @@
         //});
 
         $scope.$watch('songs', function (newVal, oldVal) {
-              window.localStorage.setItem('songs', JSON.stringify(newVal));
+            window.localStorage.setItem('songs', JSON.stringify(newVal));
         });
 
         //禁止拖拽文件
@@ -258,5 +206,67 @@
             $scope.lockProcess = false;
         };
 
+    }).controller('toolBarCtrl', function ($scope, $mdSidenav, $mdDialog) {
+
+        //滑动栏
+        $scope.toggleSliderBar = function () {
+            $mdSidenav('left').toggle();
+        };
+
+        //最小化、还原、最大化、隐藏、托盘
+        tray = new nw.Tray({title: 'iMusic', icon: 'app/assets/img/logo.png'});
+        tray.on('click', function () {
+            nw.Window.get().show();
+        });
+        menu = new nw.Menu();
+        menu.append(new nw.MenuItem({type: 'checkbox', label: '允许通知'}));
+        menu.append(new nw.MenuItem({type: 'separator'}));
+        menu.append(new nw.MenuItem({
+            label: '打开iMusic',
+            click: function () {
+                nw.Window.get().show();
+            }
+        }));
+        menu.append(new nw.MenuItem({
+            label: '关闭iMusic',
+            click: function () {
+                nw.Window.get().show();
+                var confirm = $mdDialog.confirm()
+                    .title('Tip')
+                    .textContent('Confirm close iMusic?')
+                    .ariaLabel('?')
+                    .ok('Ok')
+                    .cancel('Cancel');
+                $mdDialog.show(confirm).then(function () {
+                    nw.Window.get().close();
+                }, function () {
+                    nw.Window.get().show();
+                });
+            }
+        }));
+        tray.menu = menu;
+        $scope.isNormal = true;
+        $scope.minWindow = function () {
+            nw.Window.get().minimize();
+        };
+        $scope.maxWindow = function () {
+            if ($scope.isNormal) {
+                nw.Window.get().maximize();
+            } else {
+                nw.Window.get().unmaximize()
+            }
+            $scope.isNormal = !$scope.isNormal;
+        };
+        $scope.closeWindow = function () {
+            nw.Window.get().hide();
+        };
+        nw.Window.get().on('maximize', function () {
+            $scope.isNormal = false;
+            $scope.$apply();
+        });
+        nw.Window.get().on('unmaximize', function () {
+            $scope.isNormal = true;
+            $scope.$apply();
+        });
     });
 })(require('nw.gui'));

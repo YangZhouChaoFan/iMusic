@@ -13,7 +13,7 @@
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
 </div>
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-    <md-toolbar class="md-toolbar-tools" ng-controller="channelSelectCtrl">
+    <md-toolbar class="md-toolbar-tools">
         <md-button class="md-icon-button md-primary" ng-click="openFolder()" aria-label="目录">
             <i class="fa fa-folder"></i>
             <md-tooltip class="font-cn">目录</md-tooltip>
@@ -28,19 +28,19 @@
     <md-content>
         <div layout="row" layout-align="center center">
             <md-tooltip class="font-cn" md-direction="right">国语</md-tooltip>
-            <img class="img-view" src="assets/img/png/国语.png">
+            <img class="img-view" src="assets/img/png/国语.png" ng-click="selectChannel('国语')">
         </div>
         <div layout="row" layout-align="center center">
             <md-tooltip class="font-cn" md-direction="right">港台</md-tooltip>
-            <img class="img-view" src="assets/img/png/港台.png">
+            <img class="img-view" src="assets/img/png/港台.png" ng-click="selectChannel('港台')">
         </div>
         <div layout="row" layout-align="center center">
             <md-tooltip class="font-cn" md-direction="right">欧美</md-tooltip>
-            <img class="img-view" src="assets/img/png/欧美.png">
+            <img class="img-view" src="assets/img/png/欧美.png" ng-click="selectChannel('欧美')">
         </div>
         <div layout="row" layout-align="center center">
             <md-tooltip class="font-cn" md-direction="right">日韩</md-tooltip>
-            <img class="img-view" src="assets/img/png/日韩.png">
+            <img class="img-view" src="assets/img/png/日韩.png" ng-click="selectChannel('日韩')">
         </div>
     </md-content>
 </md-sidenav>
@@ -63,7 +63,7 @@
             </md-button>
         </div>
     </md-toolbar>
-    <md-content flex id="content" ng-controller="songListCtrl">
+    <md-content flex id="content">
         <div layout="row" class="content-background"></div>
         <div resize ng-class="{'content-song-list-sm': windowWidth > 1100}" class="content-song-list">
             <div ng-repeat="item in songs" ng-click="selectSong($index)"

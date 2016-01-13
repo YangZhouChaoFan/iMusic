@@ -146,4 +146,5 @@ html, body {
     height: 120px;
     border: 0;
     cursor: pointer;
+    outline: none;
 }
