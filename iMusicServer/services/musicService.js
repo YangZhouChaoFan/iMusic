@@ -1,7 +1,7 @@
-var muisc = require('../models/musicModel').music;
+var music = require('../models/musicModel').music;
 
 exports.query = function (data, callback) {
-    muisc.find(data, function (err, results) {
+    music.find(data, function (err, results) {
         if (err) {
             callback(true);
             return;
@@ -13,12 +13,11 @@ exports.query = function (data, callback) {
 exports.delete = function (data, callback) {
     music.remove({_id: {$in: data}}, function (err) {
         callback(err)
-    });
+    }).exec();
 };
 
 exports.insert = function (data, callback) {
-    var musicData = new muisc(data);
-    musicData.save(function(err){
-        callback(err)
-    });
+    var musicData = new music(data);
+    musicData.save();
+    callback(false)
 };

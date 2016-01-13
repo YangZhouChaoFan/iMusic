@@ -162,6 +162,7 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $htt
                 ids: ids
             }
         }).success(function (results) {
+            $scope.query();
             console.log(results);
         });
     }
