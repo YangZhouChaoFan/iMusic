@@ -3,6 +3,7 @@ var app = angular.module('app', [
     'ngAnimate',
     'ngRoute',
     'chart.js',
+    'ngFileUpload',
     'ui.grid',
     'ui.grid.pagination',
     'ui.grid.selection',
@@ -84,7 +85,7 @@ app.controller('appCtrl', function ($scope, $timeout) {
     }
 
 }).
-controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog) {
+controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $http) {
 
     //当前选择标志位
     $scope.zeroFlag = true;
@@ -92,20 +93,7 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog) {
     $scope.multiFlag = false;
 
     //表格初始化
-    $scope.data = [
-        {name:'1',author:'1',type:'1'},
-        {name:'1',author:'1',type:'1'},
-        {name:'1',author:'1',type:'1'},
-        {name:'1',author:'1',type:'1'},
-        {name:'1',author:'1',type:'1'},
-        {name:'1',author:'1',type:'1'},
-        {name:'1',author:'1',type:'1'},
-        {name:'1',author:'1',type:'1'},
-        {name:'1',author:'1',type:'1'},
-        {name:'1',author:'1',type:'1'},
-        {name:'1',author:'1',type:'1'},
-
-    ];
+    $scope.data = [];
     i18nService.setCurrentLang('zh-cn');
     $scope.gridOptions = {
         data: 'data',
@@ -117,7 +105,8 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog) {
         columnDefs: [
             {field: 'name', displayName: '歌名'},
             {field: 'author', displayName: '作者'},
-            {field: 'type', displayName: '类型'}
+            {field: 'type', displayName: '类型'},
+            {field: 'path', displayName: '路径'},
         ],
         onRegisterApi: function (gridApi) {
             //获取ui-grid的API
@@ -150,36 +139,71 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog) {
         }
     };
 
+    $scope.query = function () {
+        $http({
+            method: 'GET',
+            url: '/rest/music/query',
+            data: {}
+        }).success(function (results) {
+            $scope.data = results;
+        });
+    }
+
+    $scope.delete = function(ev){
+        var rows = $scope.gridApi.selection.getSelectedRows();
+        var ids = [];
+        for(var i = 0; i < rows.length; i++){
+            ids.push(rows[i]._id);
+        }
+        $http({
+            method: 'POST',
+            url: '/rest/music/delete',
+            data: {
+                ids: ids
+            }
+        }).success(function (results) {
+            console.log(results);
+        });
+    }
+
     //新增
     $scope.insert = function (ev) {
         var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
         $mdDialog.show({
-                controller: function($scope, $mdDialog){
-                    $scope.types = ["国语", "港台", "欧美", "日韩"];
-                    $scope.cancel = function(){
-                        $mdDialog.cancel('cancle');
-                    };
-                    $scope.ok = function(){
-                        console.log($scope.music);
+            controller: function ($scope, $mdDialog, $http) {
+                $scope.types = ["国语", "港台", "欧美", "日韩"];
+                $scope.cancel = function () {
+                    $mdDialog.cancel('cancle');
+                };
+                $scope.ok = function () {
+                    $http({
+                        method: 'POST',
+                        url: '/rest/music/insert',
+                        data: $scope.music
+                    }).success(function (results) {
                         $mdDialog.hide('ok');
-                    };
-                },
-                templateUrl: 'tpls/music.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: true,
-                fullscreen: useFullScreen
-            }).then(function (data) {
-                console.log(data);
-            }, function (data) {
-                console.log(data);
-            });
+                    });
+                };
+            },
+            templateUrl: 'tpls/music.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: useFullScreen
+        }).then(function (data) {
+            console.log(data);
+            $scope.query();
+        }, function (data) {
+            console.log(data);
+        });
         $scope.$watch(function () {
             return $mdMedia('xs') || $mdMedia('sm');
         }, function (wantsFullScreen) {
             $scope.customFullscreen = (wantsFullScreen === true);
         });
     };
+
+    $scope.query();
 
 }).controller('userCtrl', function ($scope) {
 

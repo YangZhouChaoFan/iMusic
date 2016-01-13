@@ -9,3 +9,16 @@ exports.query = function (data, callback) {
         callback(false, results);
     });
 };
+
+exports.delete = function (data, callback) {
+    music.remove({_id: {$in: data}}, function (err) {
+        callback(err)
+    });
+};
+
+exports.insert = function (data, callback) {
+    var musicData = new muisc(data);
+    musicData.save(function(err){
+        callback(err)
+    });
+};
