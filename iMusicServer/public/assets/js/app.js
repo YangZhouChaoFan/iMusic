@@ -188,7 +188,7 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $htt
                 $scope.upload = function () {
                     Upload.upload({
                         //服务端接收
-                        url: 'rest/upload',
+                        url: 'rest/music/upload',
                         //上传的同时带的参数
                         data: {file: $scope.file}
                     }).progress(function (evt) {

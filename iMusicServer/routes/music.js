@@ -64,4 +64,15 @@ router.post('/update', function (req, res, next) {
 });
 
 
+router.post('/upload', function (req, res, next) {
+    var data = {};
+    musicService.upload(data, function (err) {
+        if (err) {
+            return;
+        }
+        res.send({msg: 'ok'});
+    });
+});
+
+
 module.exports = router;
