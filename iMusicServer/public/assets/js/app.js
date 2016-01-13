@@ -113,10 +113,10 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $htt
             $scope.gridApi = gridApi;
             //ui-grid的选择事件
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
-                changeSelectFlag();
+                $scope.changeSelectFlag();
             });
             gridApi.selection.on.rowSelectionChangedBatch($scope, function (rows) {
-                changeSelectFlag();
+                $scope.changeSelectFlag();
             });
         }
     };
