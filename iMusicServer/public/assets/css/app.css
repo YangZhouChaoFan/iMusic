@@ -54,3 +54,7 @@ md-list md-list-item p a{
 .ui-grid-pager-control .ui-grid-pager-max-pages-number>* {
     vertical-align: text-top;
 }
+
+.grid,.ui-grid-selection-row-header-buttons{
+    outline: none!important;
+}
