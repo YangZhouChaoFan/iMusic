@@ -4,6 +4,7 @@ var app = angular.module('app', [
     'ngRoute',
     'chart.js',
     'ui.grid',
+    'ui.grid.pagination',
     'ui.grid.selection',
     'ui.grid.autoResize',
     'ui.grid.resizeColumns'
@@ -91,7 +92,20 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog) {
     $scope.multiFlag = false;
 
     //表格初始化
-    $scope.data = [];
+    $scope.data = [
+        {name:'1',author:'1',type:'1'},
+        {name:'1',author:'1',type:'1'},
+        {name:'1',author:'1',type:'1'},
+        {name:'1',author:'1',type:'1'},
+        {name:'1',author:'1',type:'1'},
+        {name:'1',author:'1',type:'1'},
+        {name:'1',author:'1',type:'1'},
+        {name:'1',author:'1',type:'1'},
+        {name:'1',author:'1',type:'1'},
+        {name:'1',author:'1',type:'1'},
+        {name:'1',author:'1',type:'1'},
+
+    ];
     i18nService.setCurrentLang('zh-cn');
     $scope.gridOptions = {
         data: 'data',

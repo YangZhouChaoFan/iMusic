@@ -26,3 +26,31 @@ md-list md-list-item p a{
 .splash-background.ng-hide {
     opacity:0;
 }
+
+.ui-grid-header-cell{
+    background-color: #ffffff;
+}
+
+.ui-grid-row-header-cell{
+    background-color: #ffffff!important;
+}
+
+.ui-grid-viewport{
+    overflow-x: hidden!important;
+}
+
+.ui-grid-pager-panel{
+    height: 50px;
+}
+
+.ui-grid-pager-container,.ui-grid-pager-count-container{
+    margin-top: 15px;
+}
+
+.ui-grid-pager-control input{
+    height: 15px!important;
+}
+
+.ui-grid-pager-control .ui-grid-pager-max-pages-number>* {
+    vertical-align: text-top;
+}
