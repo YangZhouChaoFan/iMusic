@@ -193,6 +193,7 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $htt
                         data: {file: $scope.file}
                     }).progress(function (evt) {
                     }).success(function (data, status, headers, config) {
+                        $scope.music.path = data.path;
                     }).error(function (data, status, headers, config) {
                     });
                 }

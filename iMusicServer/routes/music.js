@@ -1,6 +1,7 @@
 var express = require('express');
 var musicService = require('../services/musicService')
 var router = express.Router();
+var fs = require('fs');
 
 router.post('/query', function (req, res, next) {
     var data = {};
@@ -65,14 +66,15 @@ router.post('/update', function (req, res, next) {
 
 
 router.post('/upload', function (req, res, next) {
-    var data = {};
-    musicService.upload(data, function (err) {
+    var tempPath = req.files.file.path;
+    //将文件移动到你所需要的位置
+    fs.rename(tempPath, "public/uploads/" + req.files.file.name, function (err) {
         if (err) {
-            return;
+            throw err
         }
-        res.send({msg: 'ok'});
+        res.send({path: "http://localhost:3000/uploads/" + req.files.file.name});
     });
-});
 
+});
 
 module.exports = router;
