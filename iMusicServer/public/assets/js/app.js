@@ -113,31 +113,31 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $htt
             $scope.gridApi = gridApi;
             //ui-grid的选择事件
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
-                var rows = $scope.gridApi.selection.getSelectedRows();
-                changeSelectFlag(rows);
+                changeSelectFlag();
             });
             gridApi.selection.on.rowSelectionChangedBatch($scope, function (rows) {
-                changeSelectFlag(rows);
+                changeSelectFlag();
             });
-
-            function changeSelectFlag(rows) {
-                //标志位
-                if (rows.length == 0) {
-                    $scope.zeroFlag = true;
-                    $scope.singleFlag = false;
-                    $scope.multiFlag = false;
-                } else if (rows.length == 1) {
-                    $scope.zeroFlag = false;
-                    $scope.singleFlag = true;
-                    $scope.multiFlag = false;
-                } else if (rows.length > 1) {
-                    $scope.zeroFlag = false;
-                    $scope.singleFlag = false;
-                    $scope.multiFlag = true;
-                }
-            }
         }
     };
+
+    //标志位
+    $scope.changeSelectFlag = function(){
+        var rows = $scope.gridApi.selection.getSelectedRows();
+        if (rows.length == 0) {
+            $scope.zeroFlag = true;
+            $scope.singleFlag = false;
+            $scope.multiFlag = false;
+        } else if (rows.length == 1) {
+            $scope.zeroFlag = false;
+            $scope.singleFlag = true;
+            $scope.multiFlag = false;
+        } else if (rows.length > 1) {
+            $scope.zeroFlag = false;
+            $scope.singleFlag = false;
+            $scope.multiFlag = true;
+        }
+    }
 
     $scope.query = function () {
         $http({
