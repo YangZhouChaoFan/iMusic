@@ -18,8 +18,9 @@ exports.delete = function (data, callback) {
 
 exports.insert = function (data, callback) {
     var musicData = new music(data);
-    musicData.save();
-    callback(false);
+    musicData.save(function(err){
+        callback(err);
+    });
 };
 
 exports.update = function (data, callback) {
