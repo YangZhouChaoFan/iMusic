@@ -11,13 +11,19 @@ exports.query = function (data, callback) {
 };
 
 exports.delete = function (data, callback) {
-    music.remove({_id: {$in: data}}, function (err) {
+    music.remove({_id: {$in: data}}).exec(function (err) {
         callback(err)
-    }).exec();
+    });
 };
 
 exports.insert = function (data, callback) {
     var musicData = new music(data);
     musicData.save();
-    callback(false)
+    callback(false);
+};
+
+exports.update = function (data, callback) {
+    music.find({_id: data._id}).update(data).exec(function(err){
+        callback(err);
+    });
 };

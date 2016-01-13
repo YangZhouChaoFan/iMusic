@@ -141,7 +141,7 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $htt
 
     $scope.query = function () {
         $http({
-            method: 'GET',
+            method: 'POST',
             url: '/rest/music/query',
             data: {}
         }).success(function (results) {
@@ -191,6 +191,60 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $htt
             targetEvent: ev,
             clickOutsideToClose: true,
             fullscreen: useFullScreen
+        }).then(function (data) {
+            console.log(data);
+            $scope.query();
+        }, function (data) {
+            console.log(data);
+        });
+        $scope.$watch(function () {
+            return $mdMedia('xs') || $mdMedia('sm');
+        }, function (wantsFullScreen) {
+            $scope.customFullscreen = (wantsFullScreen === true);
+        });
+    };
+
+    //更新
+    $scope.update = function (ev) {
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+        $mdDialog.show({
+            controller: function ($scope, $mdDialog, $http, parentScope) {
+                var rows = parentScope.gridApi.selection.getSelectedRows();
+                var id = parentScope.gridApi.selection.getSelectedRows()[0]._id;
+                $http({
+                    method: 'POST',
+                    url: '/rest/music/queryById',
+                    data: {
+                        id: id
+                    }
+                }).success(function (results) {
+                    $scope.music = results[0];
+                });
+
+                $scope.types = ["国语", "港台", "欧美", "日韩"];
+                $scope.cancel = function () {
+                    $mdDialog.cancel('cancle');
+                };
+                $scope.ok = function () {
+                    $http({
+                        method: 'POST',
+                        url: '/rest/music/update',
+                        data: $scope.music
+                    }).success(function (results) {
+                        $mdDialog.hide('ok');
+                    });
+                };
+            },
+            templateUrl: 'tpls/music.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: useFullScreen,
+            resolve: {
+                parentScope: function () {
+                    return $scope;
+                }
+            }
         }).then(function (data) {
             console.log(data);
             $scope.query();
