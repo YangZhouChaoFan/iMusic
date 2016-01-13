@@ -1,7 +1,7 @@
-var muisc = require('../models/musicModel').muisc;
+var muisc = require('../models/musicModel').music;
 
 exports.query = function (data, callback) {
-    muisc.count(data, function (err, results) {
+    muisc.find(data, function (err, results) {
         if (err) {
             callback(true);
             return;
