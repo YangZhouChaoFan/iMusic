@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>拖拽下载</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        #down1,
+        #down2 {
+            width: 80px;
+            height: 40px;
+            padding: 0;
+            line-height: 40px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="down1" class="btn btn-primary col-md-2" draggable="true">拖拽下载1</div>
+    <div id="down2" class="btn btn-success col-md-2" draggable="true">拖拽下载2</div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#down1").on('dragstart', function (e) {
+                e.originalEvent.dataTransfer.setData("DownloadURL", "image/gif:qq.gif:data:image/gif;base64,R0lGODlhEAAQADMAACH5BAkAAAgALAAAAAAQABAAgwAAAIAAAP8AAICAAP//AICAgMDAwP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARXEEkJap1YFsvzrMYBHMaVWeImmh8oktYJEHRNsFKg24QeYACB0KcTCgCUysHIPF5QReNhhUQJp1gqoroUZKfVyYDwnRIGmcH4e0aLaWNb3I1Qq4kBuzsCADs=");
+            }).on('dragend', function (e) {
+                if (e.originalEvent.dataTransfer.dropEffect !== 'none') {
+                    $(this).text("下载成功");
+                }
+            });
+
+            $("#down2").on('dragstart', function (e) {
+                e.originalEvent.dataTransfer.setData("DownloadURL", "application/x-msdownload:hello.7z:data:application/x-msdownload;base64,N3q8ryccAATY41HsEAAAAAAAAABaAAAAAAAAAF9AnMUBAAu5/rn+o6zE47rDo6EAAQQGAAEJEAAHCwEAASEhAQAMDAAICgHgE+nhAAAFARkMAAAAAAAAAAAAAAAAERUAaABlAGwAbABvAC4AdAB4AHQAAAAUCgEA5AHTn4MR0QEVBgEAIAAAAAAA");
+            }).on('dragend', function (e) {
+                if (e.originalEvent.dataTransfer.dropEffect !== 'none') {
+                    $(this).text("下载成功");
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>

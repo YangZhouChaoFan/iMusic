@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>文件拖放</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        #drop {
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            margin: 20px;
+            background: #888;
+            color: #fff;
+            border: 1px solid #666;
+            border-radius: 5px;
+        }
+        
+        #file-content {
+            width: 100%;
+            min-height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="drop" class="col-md-2">文件拖进来</div>
+    <div class="col-md-9">
+        <p id="file-name"></p>
+        <p id="file-size"></p>
+        <p id="file-type"></p>
+        <p>
+            <textarea id="file-content"></textarea>
+        </p>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#drop').on('dragover', function (e) {
+                e.preventDefault();
+            }).on('dragenter', function (e) {
+                e.preventDefault();
+            }).on('dragleave', function (e) {
+                e.preventDefault();
+            }).on('drop', function (e) {
+                e.preventDefault();
+                var files = e.originalEvent.target.files || e.originalEvent.dataTransfer.files;
+                for (var i = 0, f; f = files[i]; i++) {
+                    handleFile(f);
+                }
+            });
+        });
+
+        function handleFile(file) {
+            if (file == null) {
+                return;
+            }
+            var reader = new FileReader();
+            reader.onerror = function (e) {
+                console.log(e.currentTarget.error);
+            };
+            reader.onload = function (e) {
+                $("#file-name").text("文件名：" + file.name);
+                $("#file-size").text("文件大小：" + file.size);
+                $("#file-type").text("文件类型：" + file.type);
+                if (file.type.indexOf("text/") === 0) {
+                    $("#file-content").val(utf8to16(e.currentTarget.result));
+                } else {
+                    $("#file-content").val("不是文本");
+                }
+            };
+            reader.onloadend = function (e) {
+                // e.currentTarget, file.name, file.type, file.size
+            };
+            reader.onprogress = function (e) {
+                // e.loaded, e.total
+            };
+            reader.readAsBinaryString(file);
+        }
+
+        function utf8to16(str) {
+            var out = "",
+                i = 0,
+                len = str.length,
+                c;
+            var char2,
+                char3;
+            while (i < len) {
+                c = str.charCodeAt(i++);
+                switch (c >> 4) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    out += str.charAt(i - 1);
+                    break;
+                case 12:
+                case 13:
+                    char2 = str.charCodeAt(i++);
+                    out += String.fromCharCode(((c & 0x1F) << 6) | (char2 & 0x3F));
+                    break;
+                case 14:
+                    char2 = str.charCodeAt(i++);
+                    char3 = str.charCodeAt(i++);
+                    out += String.fromCharCode(((c & 0x0F) << 12) | ((char2 & 0x3F) << 6) | ((char3 & 0x3F) << 0));
+                    break;
+                }
+            }
+            return out;
+        }
+    </script>
+</body>
+
+</html>

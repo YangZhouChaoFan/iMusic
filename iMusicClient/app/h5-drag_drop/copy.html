@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>拖拽复制</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        #src > li,
+        #dst > li {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            line-height: 50px;
+            color: #aaa;
+            border: 1px solid #cccccc;
+            margin: 1px;
+            cursor: move;
+        }
+        
+        #src,
+        #dst {
+            min-width: 200px;
+            min-height: 160px;
+            padding: 10px;
+            border: 1px solid #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="src" class="col-md-12">
+        <li class="btn col-md-1" draggable="true">A1</li>
+        <li class="btn col-md-1" draggable="true">A2</li>
+        <li class="btn col-md-1" draggable="true">A3</li>
+        <li class="btn col-md-1" draggable="true">A4</li>
+        <li class="btn col-md-1" draggable="true">A5</li>
+        <li class="btn col-md-1" draggable="true">A6</li>
+        <li class="btn col-md-1" draggable="true">A7</li>
+        <li class="btn col-md-1" draggable="true">A8</li>
+    </ul>
+
+    <ul id="dst" class="col-md-12"></ul>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("ul > li[draggable]").on('dragstart', function (e) {
+                e.originalEvent.dataTransfer.setData('type', '1');
+                e.originalEvent.dataTransfer.setData('value', $(this).text());
+            }).on('dragend', function (e) {
+                console.log(e.originalEvent.dataTransfer.dropEffect);
+            });
+
+            $("#dst").on('dragover', function (e) {
+                e.preventDefault();
+            }).on('dragenter', function (e) {
+                e.preventDefault();
+                var _type = e.originalEvent.dataTransfer.getData('type');
+                console.log(_type);
+            }).on('dragleave', function (e) {
+                e.preventDefault();
+            }).on('drop', function (e) {
+                e.preventDefault();
+                var _type = e.originalEvent.dataTransfer.getData('type');
+                var _value = e.originalEvent.dataTransfer.getData('value');
+                if (_type === '1') {
+                    var ul = $(this);
+                    var li = $('<li>').text(_value).addClass('btn col-md-1').appendTo(ul);
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>
