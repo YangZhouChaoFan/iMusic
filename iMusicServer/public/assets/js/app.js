@@ -160,6 +160,7 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog) {
                         $mdDialog.cancel('cancle');
                     };
                     $scope.ok = function(){
+                        console.log($scope.music);
                         $mdDialog.hide('ok');
                     };
                 },
