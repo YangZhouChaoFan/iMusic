@@ -4,11 +4,11 @@
             <i class="fa fa-plus"></i>
             <span>新增</span>
         </md-button>
-        <md-button class="md-raised md-primary" ng-click="update($event)">
+        <md-button ng-disabled="!singleFlag" class="md-raised md-primary" ng-click="update($event)">
             <i class="fa fa-pencil"></i>
             <span>修改</span>
         </md-button>
-        <md-button class="md-raised md-primary" ng-click="delete($event)">
+        <md-button ng-disabled="zeroFlag" class="md-raised md-primary" ng-click="delete($event)">
             <i class="fa fa-remove"></i>
             <span>删除</span>
         </md-button>
