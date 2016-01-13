@@ -31,8 +31,20 @@
                 </md-input-container>
                 <md-input-container flex-gt-sm>
                     <label>路径</label>
-                    <input ng-model="music.path" >
+                    <input ng-model="music.path">
                 </md-input-container>
+            </div>
+            <div layout="row" flex="100" ng-show="!music.path">
+                <md-button flex class="md-button" aria-label="选择音乐文件"
+                           ngf-select ng-model="file" ngf-pattern="'.mp3'"
+                           ngf-accept="'.mp3'" ngf-max-size="20MB" ng-change="music.name=file.name">
+                    <i class="fa fa-music"></i>
+                    <span>选择音乐文件</span>
+                </md-button>
+                <md-button flex class="md-button" aria-label="上传">
+                    <i class="fa fa-upload"></i>
+                    <span>上传</span>
+                </md-button>
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">

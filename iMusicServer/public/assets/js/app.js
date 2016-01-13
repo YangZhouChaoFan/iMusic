@@ -171,7 +171,7 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $htt
     $scope.insert = function (ev) {
         var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
         $mdDialog.show({
-            controller: function ($scope, $mdDialog, $http) {
+            controller: function ($scope, $mdDialog, $http, Upload) {
                 $scope.types = ["国语", "港台", "欧美", "日韩"];
                 $scope.cancel = function () {
                     $mdDialog.cancel('cancle');
@@ -185,6 +185,17 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $htt
                         $mdDialog.hide('ok');
                     });
                 };
+                $scope.upload = function () {
+                    Upload.upload({
+                        //服务端接收
+                        url: 'rest/upload',
+                        //上传的同时带的参数
+                        data: {file: $scope.file}
+                    }).progress(function (evt) {
+                    }).success(function (data, status, headers, config) {
+                    }).error(function (data, status, headers, config) {
+                    });
+                }
             },
             templateUrl: 'tpls/music.html',
             parent: angular.element(document.body),
@@ -258,6 +269,7 @@ controller('musicCtrl', function ($scope, i18nService, $mdMedia, $mdDialog, $htt
         });
     };
 
+    //执行查询
     $scope.query();
 
 }).controller('userCtrl', function ($scope) {
