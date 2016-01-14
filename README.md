@@ -1,7 +1,8 @@
 # iMusic
 ## 基于nodejs的音乐播放器
-## 前端node-webkit + angular + angular-material
-## 后端express + mongoDB
+## 客户端：node-webkit + angular + angular-material
+## 移动端：react-native
+## web管理端：express + mongoDB
  
 > 导出数据
 ```
