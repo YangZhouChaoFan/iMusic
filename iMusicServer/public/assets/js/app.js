@@ -1,5 +1,6 @@
 var app = angular.module('app', [
     'ngMaterial',
+    'ngMessages',
     'ngAnimate',
     'ngRoute',
     'chart.js',
