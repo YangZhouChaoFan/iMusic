@@ -1,0 +1,9 @@
+{"_id":{"$oid":"569646516c608e540f91d2ff"},"name":"单身狗之歌","path":"http://localhost:3000/uploads/慕寒 - 单身狗之歌.mp3","author":"慕寒","type":"国语","__v":0}
+{"_id":{"$oid":"569707a589ea70f819aa733a"},"name":"天后","path":"http://localhost:3000/uploads/回音哥 - 天后.mp3","author":"回音哥","type":"国语","__v":0}
+{"_id":{"$oid":"5697084189ea70f819aa733b"},"name":"はたもとひろ","path":"http://localhost:3000/uploads/秦基博 (はたもとひろ) - Rain (雨) (《言叶之庭》剧场版片尾曲).mp3","author":"秦基博","type":"日韩","__v":0}
+{"_id":{"$oid":"5697085a89ea70f819aa733c"},"name":"Butter-Fly","path":"http://localhost:3000/uploads/和田光司 - Butter-Fly (Piano Version) (《数码宝贝》TV动画片头曲).mp3","author":"和田光司","type":"日韩","__v":0}
+{"_id":{"$oid":"5697089c89ea70f819aa733d"},"name":"Fade","path":"http://localhost:3000/uploads/Alan Walker - Fade.mp3","author":"Alan Walke","type":"欧美","__v":0}
+{"_id":{"$oid":"569708b389ea70f819aa733e"},"name":"Crowd Chant","path":"http://localhost:3000/uploads/Joe Satriani - Crowd Chant.mp3","author":"Joe Satriani","type":"欧美","__v":0}
+{"_id":{"$oid":"569708c789ea70f819aa733f"},"name":"Uptown Funk","path":"http://localhost:3000/uploads/Mark Ronson - Uptown Funk (湖南卫视2015-2016跨年演唱会原曲).mp3","author":"Mark Ronson","type":"欧美","__v":0}
+{"_id":{"$oid":"5697091189ea70f819aa7340"},"name":"十年","path":"http://localhost:3000/uploads/陈奕迅 - 十年.mp3","author":"陈奕迅","type":"港台","__v":0}
+{"_id":{"$oid":"5697092689ea70f819aa7341"},"name":"一生中最爱","path":"http://localhost:3000/uploads/谭咏麟 - 一生中最爱.mp3","author":"谭咏麟","type":"港台","__v":0}
