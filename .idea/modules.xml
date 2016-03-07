@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/iMusicClient/iMusicClient.iml" filepath="$PROJECT_DIR$/iMusicClient/iMusicClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iMusicServer/iMusicServer.iml" filepath="$PROJECT_DIR$/iMusicServer/iMusicServer.iml" />
+    </modules>
+  </component>
+</project>
