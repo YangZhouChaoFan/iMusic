@@ -4,7 +4,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2256138-9c65-4533-85f7-8ac8224d0b01" name="Default" comment="" />
+    <list default="true" id="d2256138-9c65-4533-85f7-8ac8224d0b01" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="iMusic.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -1090,7 +1092,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1101,14 +1105,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/iMusicApp" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/SpringMVC_02" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -1682,6 +1684,8 @@
       <workItem from="1456975157555" duration="561000" />
       <workItem from="1456988702362" duration="26000" />
       <workItem from="1457059175939" duration="5286000" />
+      <workItem from="1457334073197" duration="1068000" />
+      <workItem from="1457337019803" duration="59000" />
     </task>
     <task id="LOCAL-00057" summary="修改缓存列表">
       <created>1452495939337</created>
@@ -1981,7 +1985,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167465000" />
+    <option name="totallyTimeSpent" value="168592000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
