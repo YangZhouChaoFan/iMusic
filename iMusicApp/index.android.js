@@ -14,6 +14,27 @@ import React, {
 } from 'react-native';
 
 class iMusicApp extends Component {
+
+    onPlay(){
+
+    }
+
+    onPre(){
+
+    }
+
+    onNext(){
+
+    }
+
+    onStop(){
+
+    }
+
+    onRepeat(){
+
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -22,7 +43,7 @@ class iMusicApp extends Component {
                     <View style={styles.playBoxBar}>
                         <TouchableNativeFeedback
                             style={styles.playBoxBarBtn}
-                            onPress={this._onPressButton}
+                            onPress={this.onPlay()}
                             background={TouchableNativeFeedback.SelectableBackground() }>
                             <View>
                                 <Image source={require('./images/play.png') } style={styles.playBoxBtnIcon}/> 
@@ -30,7 +51,7 @@ class iMusicApp extends Component {
                         </TouchableNativeFeedback>
                         <TouchableNativeFeedback
                             style={styles.playBoxBarBtn}
-                            onPress={this._onPressButton}
+                            onPress={this.onPre()}
                             background={TouchableNativeFeedback.SelectableBackground() }>
                             <View>
                                 <Image source={require('./images/pre.png') } style={styles.playBoxBtnIcon}/> 
@@ -38,7 +59,7 @@ class iMusicApp extends Component {
                         </TouchableNativeFeedback>
                         <TouchableNativeFeedback
                             style={styles.playBoxBarBtn}
-                            onPress={this._onPressButton}
+                            onPress={this.onNext()}
                             background={TouchableNativeFeedback.SelectableBackground() }>
                             <View>
                                 <Image source={require('./images/next.png') } style={styles.playBoxBtnIcon}/> 
@@ -46,7 +67,7 @@ class iMusicApp extends Component {
                         </TouchableNativeFeedback> 
                         <TouchableNativeFeedback
                             style={styles.playBoxBarBtn}
-                            onPress={this._onPressButton}
+                            onPress={this.onStop()}
                             background={TouchableNativeFeedback.SelectableBackground() }>
                             <View>
                                 <Image source={require('./images/stop.png') } style={styles.playBoxBtnIcon}/> 
@@ -54,7 +75,7 @@ class iMusicApp extends Component {
                         </TouchableNativeFeedback>
                         <TouchableNativeFeedback
                             style={styles.playBoxBarBtn}
-                            onPress={this._onPressButton}
+                            onPress={this.onRepeat()}
                             background={TouchableNativeFeedback.SelectableBackground() }>
                             <View>
                                 <Image source={require('./images/repeat.png') } style={styles.playBoxBtnIcon}/> 
