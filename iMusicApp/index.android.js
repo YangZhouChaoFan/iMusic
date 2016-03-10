@@ -13,6 +13,8 @@ import React, {
     View
 } from 'react-native';
 
+var Sound = require('react-native-sound');
+
 class iMusicApp extends Component {
 
     onPlay(){
